@@ -11,13 +11,15 @@ jobs:
                 - v1-dependencies-{{ checksum "composer.json" }}
                 - v1-dependencies-
             - run:
-                name: Composer install
+                name: Composer Install
                 command: composer install -n --prefer-dist
             - save_cache:
                   paths:
                       - ./vendor
                   key: v1-dependencies-{{ checksum "composer.json" }}
-            - run: composer test
+            - run:
+                name: Test
+                command: composer test
     build:
         docker:
             - image: circleci/php:7.2.1-browsers
@@ -37,9 +39,9 @@ jobs:
                 key: v1-dependencies-{{ checksum "composer.json" }}
             - run:
                 name: Create artifacts file
-                command: tar --exclude='*.tgz' --exclude='./.git' -zvcf $CIRCLE_SHA1.tgz .
+                command: tar --exclude='*.tgz' --exclude='./.git' -zvcf artifacts.tgz .
             - store_artifacts:
-                path: $CIRCLE_SHA1.tgz
+                path: artifacts.tgz
     deploy:
         docker:
             - image: circleci/php:7.2.1-browsers
