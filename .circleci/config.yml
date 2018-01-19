@@ -36,7 +36,7 @@ jobs:
             - run: mkdir artifacts
             - run:
                 name: Create artifacts file
-                command: tar --exclude='*.tgz' --exclude='./.git' --exclude='./artifacts' -zvcf artifacts/artifacts.tgz
+                command: tar --exclude='*.tgz' --exclude='./.git' --exclude='./artifacts' -zvcf artifacts/artifacts.tgz .
             - run:
                 name: Authorize with Google Cloud
                 command: |
