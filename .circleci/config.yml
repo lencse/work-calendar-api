@@ -39,9 +39,14 @@ jobs:
                 key: v1-dependencies-{{ checksum "composer.json" }}
             - run:
                 name: Create artifacts file
-                command: tar --exclude='*.tgz' --exclude='./.git' -zvcf artifacts.tgz .
-            - store_artifacts:
-                path: artifacts.tgz
+                command: |
+                    mkdir artifacts
+                    tar --exclude='*.tgz' --exclude='./.git' --exclude='./artifacts' -zvcf artifacts/$CIRCLE_SHA1.tgz
+            - run:
+                name: Authorize with Google Cloud
+                command: |
+                    echo $GCLOUD_CI_AUTH_SECRET | base64 --decode > gcloud-auth-secret.json
+                    gcloud auth activate-service-account --key-file gcloud-auth-secret.json
     deploy:
         docker:
             - image: circleci/php:7.2.1-browsers
