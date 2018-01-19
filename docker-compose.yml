@@ -6,13 +6,13 @@ volumes:
 
 services:
     slim:
-        image: php:7-alpine
+        image: php:7.2-alpine
         working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public public/index.php
+        command: php -S 0.0.0.0:8220 public/index.php
         environment:
             docker: "true"
         ports:
-            - 8080:8080
+            - 8220:8220
         volumes:
             - .:/var/www
             - logs:/var/www/logs
