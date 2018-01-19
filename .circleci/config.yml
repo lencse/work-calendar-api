@@ -28,9 +28,11 @@ jobs:
                 - v1-dependencies-
             - run: composer install -n --prefer-dist --no-dev
             - save_cache:
-                  paths:
-                      - ./vendor
-                  key: v1-dependencies-{{ checksum "composer.json" }}
+                paths:
+                    - ./vendor
+                key: v1-dependencies-{{ checksum "composer.json" }}
+            - store_artifacts:
+                path: .
 workflows:
     version: 2
     build_and_test:
