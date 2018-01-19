@@ -33,20 +33,19 @@ jobs:
             - run:
                 name: Composer install
                 command: composer install -n --prefer-dist --no-dev
-            - save_cache:
-                paths:
-                    - ./vendor
-                key: v1-dependencies-{{ checksum "composer.json" }}
+            - run: mkdir artifacts
             - run:
                 name: Create artifacts file
-                command: |
-                    mkdir artifacts
-                    tar --exclude='*.tgz' --exclude='./.git' --exclude='./artifacts' -zvcf artifacts/artifacts.tgz
+                command: tar --exclude='*.tgz' --exclude='./.git' --exclude='./artifacts' -zvcf artifacts/artifacts.tgz
             - run:
                 name: Authorize with Google Cloud
                 command: |
                     echo $GCLOUD_CI_AUTH_SECRET | base64 --decode > gcloud-auth-secret.json
                     gcloud auth activate-service-account --key-file gcloud-auth-secret.json
+            - save_cache:
+                paths:
+                    - ./vendor
+                key: v1-dependencies-{{ checksum "composer.json" }}
     deploy:
         docker:
             - image: circleci/php:7.2.1-browsers
