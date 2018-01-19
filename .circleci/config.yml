@@ -10,7 +10,9 @@ jobs:
                 keys:
                 - v1-dependencies-{{ checksum "composer.json" }}
                 - v1-dependencies-
-            - run: composer install -n --prefer-dist
+            - run:
+                name: Composer install
+                command: composer install -n --prefer-dist
             - save_cache:
                   paths:
                       - ./vendor
@@ -26,16 +28,31 @@ jobs:
                 keys:
                 - v1-dependencies-{{ checksum "composer.json" }}
                 - v1-dependencies-
-            - run: composer install -n --prefer-dist --no-dev
+            - run:
+                name: Composer install
+                command: composer install -n --prefer-dist --no-dev
             - save_cache:
                 paths:
                     - ./vendor
                 key: v1-dependencies-{{ checksum "composer.json" }}
             - store_artifacts:
                 path: .
+    deploy:
+        docker:
+            - image: circleci/php:7.2.1-browsers
+        working_directory: ~/repo
+        steps:
+            - checkout
+            - run:
+                name: Deploy
+                command: find .
 workflows:
     version: 2
     build_and_test:
         jobs:
             - build
             - test
+            - deploy:
+                requires:
+                    - build
+                    - test
