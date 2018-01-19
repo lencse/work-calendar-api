@@ -41,7 +41,7 @@ jobs:
                 name: Create artifacts file
                 command: |
                     mkdir artifacts
-                    tar --exclude='*.tgz' --exclude='./.git' --exclude='./artifacts' -zvcf artifacts/$CIRCLE_SHA1.tgz
+                    tar --exclude='*.tgz' --exclude='./.git' --exclude='./artifacts' -zvcf artifacts/artifacts.tgz
             - run:
                 name: Authorize with Google Cloud
                 command: |
