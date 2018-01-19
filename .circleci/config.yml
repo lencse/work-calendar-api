@@ -21,7 +21,7 @@ jobs:
                       - ./vendor
                   key: v1-dependencies-{{ checksum "composer.json" }}
 
-             - run: composer test
+            - run: composer test
     build:
         docker:
             - image: circleci/php:7.2.1-browsers
@@ -43,4 +43,3 @@ jobs:
                       - ./vendor
                   key: v1-dependencies-{{ checksum "composer.json" }}
 
-     
