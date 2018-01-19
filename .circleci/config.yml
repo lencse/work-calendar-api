@@ -22,7 +22,7 @@ jobs:
                 command: composer test
     build:
         docker:
-            - image: circleci/php:7.2.1-browsers
+            - image: magyarjeti/palvin-php:1.6.0
         working_directory: ~/repo
         steps:
             - checkout
