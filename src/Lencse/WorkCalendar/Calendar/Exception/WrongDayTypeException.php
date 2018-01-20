@@ -2,6 +2,6 @@
 
 namespace Lencse\WorkCalendar\Calendar\Exception;
 
-class WrongDayType extends \InvalidArgumentException
+class WrongDayTypeException extends \InvalidArgumentException
 {
 }

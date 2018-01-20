@@ -3,7 +3,7 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\WorkCalendar\Calendar\DayType;
-use Lencse\WorkCalendar\Calendar\Exception\WrongDayType;
+use Lencse\WorkCalendar\Calendar\Exception\WrongDayTypeException;
 use PHPUnit\Framework\TestCase;
 
 class DayTypeTest extends TestCase
@@ -27,7 +27,7 @@ class DayTypeTest extends TestCase
 
     public function testArgument()
     {
-        $this->expectException(WrongDayType::class);
+        $this->expectException(WrongDayTypeException::class);
         DayType::get('invalid');
     }
 

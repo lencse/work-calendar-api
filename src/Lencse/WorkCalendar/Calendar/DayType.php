@@ -2,7 +2,7 @@
 
 namespace Lencse\WorkCalendar\Calendar;
 
-use Lencse\WorkCalendar\Calendar\Exception\WrongDayType;
+use Lencse\WorkCalendar\Calendar\Exception\WrongDayTypeException;
 
 class DayType
 {
@@ -43,7 +43,7 @@ class DayType
     private static function validateKey(string $key)
     {
         if (!array_key_exists($key, self::$names)) {
-            throw new WrongDayType(sprintf(
+            throw new WrongDayTypeException(sprintf(
                 'Wrong day type key: %s. Valid day keys are: %s',
                 $key,
                 implode(', ', array_keys(self::$names))

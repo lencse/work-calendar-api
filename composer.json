@@ -25,7 +25,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Lencse\\WorkCalendar\\Calendar\\": "src/Lencse/WorkCalendar/Calendar/"
+            "Lencse\\WorkCalendar\\Calendar\\": "src/Lencse/WorkCalendar/Calendar/",
+            "Lencse\\Date\\": "src/Lencse/Date/"
         }
     },
     "autoload-dev": {
