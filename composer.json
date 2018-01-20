@@ -20,9 +20,14 @@
     "require-dev": {
         "phpunit/phpunit": "^6.5"
     },
+    "autoload": {
+        "psr-4": {
+            "Lencse\\WorkCalendar\\Calendar\\": "src/Lencse/WorkCalendar/Calendar/"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Test\\": "test/"
         }
     },
     "config": {
