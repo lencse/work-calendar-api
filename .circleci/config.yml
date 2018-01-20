@@ -45,7 +45,7 @@ workflows:
     version: 2
     standard:
         jobs:
-            - build
+            - test
             - deploy-to-staging
                 requires:
                     - test
