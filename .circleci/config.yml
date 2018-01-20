@@ -2,7 +2,7 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/php:7.2.1-cli-node-browsers
+            - image: circleci/php:7.2.1-browsers
         working_directory: ~/repo
         steps:
             - checkout
@@ -17,6 +17,9 @@ jobs:
                   paths:
                       - ./vendor
                   key: v1-dependencies-{{ checksum "composer.json" }}
+            - run:
+                name: Enable Xdebug
+                command: pecl install xdebug && docker-php-ext-enable xdebug
             - run:
                 name: Test
                 command: composer test-all
