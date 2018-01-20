@@ -1,0 +1,11 @@
+runtime: php
+env: flex
+service: api
+
+runtime_config:
+    document_root: public
+
+manual_scaling:
+    instances: 1
+
+env_variables:
