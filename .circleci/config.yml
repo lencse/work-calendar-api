@@ -46,6 +46,6 @@ workflows:
     standard:
         jobs:
             - build
-            - deploy-to-staging
+            - deploy-to-staging:
                 requires:
                     - build
