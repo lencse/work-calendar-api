@@ -20,7 +20,7 @@ jobs:
             - run:
                 name: Test
                 command: composer test
-    deploy-to-stagng:
+    deploy-to-staging:
         docker:
             - image: google/cloud-sdk:latest
         working_directory: ~/repo
