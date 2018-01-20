@@ -1,6 +1,6 @@
 version: 2
 jobs:
-    test:
+    build:
         docker:
             - image: circleci/php:7.2.1-browsers
         working_directory: ~/repo
@@ -45,7 +45,7 @@ workflows:
     version: 2
     standard:
         jobs:
-            - test
+            - build
             - deploy-to-staging
                 requires:
-                    - test
+                    - build
