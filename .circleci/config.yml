@@ -18,9 +18,6 @@ jobs:
                       - ./vendor
                   key: v1-dependencies-{{ checksum "composer.json" }}
             - run:
-                name: Enable Xdebug
-                command: sudo pecl install xdebug && sudo docker-php-ext-enable xdebug
-            - run:
                 name: Test
                 command: composer test-all
     deploy-to-staging:
