@@ -19,7 +19,7 @@ jobs:
                   key: v1-dependencies-{{ checksum "composer.json" }}
             - run:
                 name: Test
-                command: composer test
+                command: composer test-all
     deploy-to-staging:
         docker:
             - image: google/cloud-sdk:latest
