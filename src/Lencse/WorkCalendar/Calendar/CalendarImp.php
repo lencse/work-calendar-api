@@ -5,6 +5,7 @@ namespace Lencse\WorkCalendar\Calendar;
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
+use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 
 class CalendarImp implements Calendar
@@ -15,13 +16,23 @@ class CalendarImp implements Calendar
      */
     private $dayTypeRepo;
 
-    public function __construct(DayTypeRepository $dayTypeRepo)
+    /**
+     * @var DayRepository
+     */
+    private $dayRepo;
+
+    public function __construct(DayTypeRepository $dayTypeRepo, DayRepository $dayRepo)
     {
         $this->dayTypeRepo = $dayTypeRepo;
+        $this->dayRepo = $dayRepo;
     }
 
     public function createDayForDate(DateTimeInterface $date): Day
     {
+        if ($this->dayRepo->has($date)) {
+            return $this->dayRepo->get($date);
+        }
+
         return new DayImp($date, $this->dayTypeRepo->getDefaultForDate($date));
     }
 }
