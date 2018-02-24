@@ -4,15 +4,15 @@ namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
 use Lencse\WorkCalendar\Calendar\DayType;
-use Lencse\WorkCalendar\Calendar\IrregularDay;
+use Lencse\WorkCalendar\Calendar\SpecialDay;
 use PHPUnit\Framework\TestCase;
 
-class IrregularDayTest extends TestCase
+class SpecialDayTest extends TestCase
 {
 
     public function testDayCreation()
     {
-        $day = new IrregularDay(
+        $day = new SpecialDay(
             DateHelper::dateTime('2017-03-15'),
             DayType::get(DayType::NON_WORKING_DAY),
             'Az 1848-as forradalom ünnepe'
@@ -24,7 +24,7 @@ class IrregularDayTest extends TestCase
 
     public function testDayCreationWithEmptyDescription()
     {
-        $day = new IrregularDay(
+        $day = new SpecialDay(
             DateHelper::dateTime('2017-03-18'),
             DayType::get(DayType::RELOCATED_WORKING_DAY)
         );

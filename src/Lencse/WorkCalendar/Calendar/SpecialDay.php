@@ -2,7 +2,7 @@
 
 namespace Lencse\WorkCalendar\Calendar;
 
-class IrregularDay
+class SpecialDay
 {
 
     use DayTrait;
