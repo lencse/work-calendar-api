@@ -16,4 +16,10 @@ interface Calendar
      * @return Day[]
      */
     public function getInterval(DateTimeInterface $startDate, DateTimeInterface $endDate): array;
+
+    /**
+     * @param int $year
+     * @return Day[]
+     */
+    public function getYear(int $year): array;
 }

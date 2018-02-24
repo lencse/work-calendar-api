@@ -4,6 +4,7 @@ namespace Lencse\WorkCalendar\Calendar;
 
 use DateTime;
 use DateTimeInterface;
+use DateTimeImmutable;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
@@ -52,5 +53,17 @@ class CalendarImp implements Calendar
         }
 
         return $result;
+    }
+
+    /**
+     * @param int $year
+     * @return Day[]
+     */
+    public function getYear(int $year): array
+    {
+        return $this->getInterval(
+            DateTimeImmutable::createFromFormat('Y-m-d', sprintf('%s-01-01', $year)),
+            DateTimeImmutable::createFromFormat('Y-m-d', sprintf('%s-12-31', $year))
+        );
     }
 }
