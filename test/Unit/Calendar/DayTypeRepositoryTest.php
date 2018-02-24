@@ -32,9 +32,8 @@ class DayTypeRepositoryTest extends TestCase
 
     public function testArgument()
     {
-        $repo = new HuDayTypeRepository();
         $this->expectException(WrongDayTypeException::class);
-        $repo->get('invalid');
+        $this->repo->get('invalid');
     }
 
     private function dayTypeEquals(string $key, string $name, bool $rest, bool $special)

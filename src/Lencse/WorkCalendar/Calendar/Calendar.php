@@ -1,11 +1,11 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar\Factory;
+namespace Lencse\WorkCalendar\Calendar;
 
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 
-interface DayFactory
+interface Calendar
 {
 
     public function createDayForDate(DateTimeInterface $date): Day;

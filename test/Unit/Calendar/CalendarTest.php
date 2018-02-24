@@ -3,17 +3,17 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Factory\DayFactory;
-use Lencse\WorkCalendar\Calendar\Factory\DayFactoryImp;
+use Lencse\WorkCalendar\Calendar\Calendar;
+use Lencse\WorkCalendar\Calendar\CalendarImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Calendar\Repository\HuDayTypeRepository;
 use PHPUnit\Framework\TestCase;
 
-class DayFactoryTest extends TestCase
+class CalendarTest extends TestCase
 {
 
     /**
-     * @var DayFactory
+     * @var Calendar
      */
     private $factory;
 
@@ -25,7 +25,7 @@ class DayFactoryTest extends TestCase
     protected function setUp()
     {
         $this->dayTypeRepo = new HuDayTypeRepository();
-        $this->factory = new DayFactoryImp($this->dayTypeRepo);
+        $this->factory = new CalendarImp($this->dayTypeRepo);
     }
 
     public function testGetWorkingDay()

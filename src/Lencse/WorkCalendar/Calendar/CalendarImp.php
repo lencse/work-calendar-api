@@ -1,13 +1,13 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar\Factory;
+namespace Lencse\WorkCalendar\Calendar;
 
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 
-class DayFactoryImp implements DayFactory
+class CalendarImp implements Calendar
 {
 
     /**
