@@ -1,14 +1,15 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar;
+namespace Lencse\WorkCalendar\Calendar\Day;
 
 use DateTimeInterface;
+use Lencse\WorkCalendar\Calendar\DayType\DayType;
 
-trait DayTrait
+class DayImp implements Day
 {
 
     /**
-     * @var DateTime
+     * @var DateTimeInterface
      */
     private $date;
 
