@@ -8,5 +8,5 @@ use Lencse\WorkCalendar\Calendar\Day\Day;
 interface Calendar
 {
 
-    public function createDayForDate(DateTimeInterface $date): Day;
+    public function getDay(DateTimeInterface $date): Day;
 }

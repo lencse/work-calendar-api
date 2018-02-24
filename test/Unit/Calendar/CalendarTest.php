@@ -46,7 +46,7 @@ class CalendarTest extends TestCase
 
     public function testGetWorkingDay()
     {
-        $day = $this->calendar->createDayForDate(DateHelper::dateTime('2018-02-23'));
+        $day = $this->calendar->getDay(DateHelper::dateTime('2018-02-23'));
         $this->assertEquals(DateHelper::dateTime('2018-02-23'), $day->getDate());
         $this->assertEquals($this->dayTypeRepo->get(HuDayTypeRepository::WORKING_DAY), $day->getType());
         $this->assertEquals('', $day->getDescription());
@@ -54,7 +54,7 @@ class CalendarTest extends TestCase
 
     public function testGetWeekend()
     {
-        $day = $this->calendar->createDayForDate(DateHelper::dateTime('2018-02-24'));
+        $day = $this->calendar->getDay(DateHelper::dateTime('2018-02-24'));
         $this->assertEquals(DateHelper::dateTime('2018-02-24'), $day->getDate());
         $this->assertEquals($this->dayTypeRepo->get(HuDayTypeRepository::WEEKEND), $day->getType());
         $this->assertEquals('', $day->getDescription());
@@ -62,7 +62,7 @@ class CalendarTest extends TestCase
 
     public function testGetNonWorkingDay()
     {
-        $day = $this->calendar->createDayForDate(DateHelper::dateTime('2018-03-15'));
+        $day = $this->calendar->getDay(DateHelper::dateTime('2018-03-15'));
         $this->assertEquals(DateHelper::dateTime('2018-03-15'), $day->getDate());
         $this->assertEquals($this->dayTypeRepo->get(HuDayTypeRepository::NON_WORKING_DAY), $day->getType());
         $this->assertEquals('description', $day->getDescription());

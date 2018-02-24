@@ -27,7 +27,7 @@ class CalendarImp implements Calendar
         $this->dayRepo = $dayRepo;
     }
 
-    public function createDayForDate(DateTimeInterface $date): Day
+    public function getDay(DateTimeInterface $date): Day
     {
         if ($this->dayRepo->has($date)) {
             return $this->dayRepo->get($date);
