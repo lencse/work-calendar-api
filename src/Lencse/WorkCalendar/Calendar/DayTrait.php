@@ -2,7 +2,7 @@
 
 namespace Lencse\WorkCalendar\Calendar;
 
-use DateTime;
+use DateTimeInterface;
 
 trait DayTrait
 {
@@ -22,14 +22,14 @@ trait DayTrait
      */
     private $description;
 
-    public function __construct(DateTime $date, DayType $type, string $description = '')
+    public function __construct(DateTimeInterface $date, DayType $type, string $description = '')
     {
         $this->date = $date;
         $this->type = $type;
         $this->description = $description;
     }
 
-    public function getDate(): DateTime
+    public function getDate(): DateTimeInterface
     {
         return $this->date;
     }

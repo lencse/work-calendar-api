@@ -2,7 +2,7 @@
 
 namespace Lencse\Date;
 
-use DateTime;
+use DateTimeImmutable;
 use Lencse\Date\Exception\WrongDateFormatException;
 
 class DateHelper
@@ -13,11 +13,11 @@ class DateHelper
         '/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/' => 'Y-m-d H:i:s',
     ];
 
-    public static function dateTime(string $dateString): DateTime
+    public static function dateTime(string $dateString): \DateTimeInterface
     {
         foreach (self::$regexpToFormat as $regexp => $format) {
             if (preg_match($regexp, $dateString)) {
-                return DateTime::createFromFormat($format, $dateString);
+                return DateTimeImmutable::createFromFormat($format, $dateString);
             }
         }
 
