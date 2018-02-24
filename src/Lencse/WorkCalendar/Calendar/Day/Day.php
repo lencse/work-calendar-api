@@ -9,6 +9,8 @@ interface Day
 {
 
     public function getDate(): DateTimeInterface;
+
     public function getType(): DayType;
+
     public function getDescription(): string;
 }

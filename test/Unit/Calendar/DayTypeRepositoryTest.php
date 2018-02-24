@@ -2,7 +2,6 @@
 
 namespace Test\Unit\Calendar;
 
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
 use Lencse\WorkCalendar\Calendar\Exception\WrongDayTypeException;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Calendar\Repository\HuDayTypeRepository;
