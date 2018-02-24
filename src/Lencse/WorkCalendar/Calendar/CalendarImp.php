@@ -2,6 +2,7 @@
 
 namespace Lencse\WorkCalendar\Calendar;
 
+use DateTime;
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
@@ -34,5 +35,22 @@ class CalendarImp implements Calendar
         }
 
         return new DayImp($date, $this->dayTypeRepo->getDefaultForDate($date));
+    }
+
+    /**
+     * @param DateTimeInterface $startDate
+     * @param DateTimeInterface $endDate
+     * @return Day[]
+     */
+    public function getInterval(DateTimeInterface $startDate, DateTimeInterface $endDate): array
+    {
+        $result = [];
+        $day = DateTime::createFromFormat('Y-m-d', $startDate->format('Y-m-d'));
+        while ($day->getTimestamp() <= $endDate->getTimestamp()) {
+            $result[] = $this->getDay(clone $day);
+            $day = $day->add(new \DateInterval('P1D'));
+        }
+
+        return $result;
     }
 }
