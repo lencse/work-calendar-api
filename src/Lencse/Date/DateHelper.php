@@ -15,6 +15,9 @@ class DateHelper
 
     public static function dateTime(string $dateString): \DateTimeInterface
     {
+        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $dateString)) {
+            return DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $dateString . ' 00:00:00');
+        }
         foreach (self::$regexpToFormat as $regexp => $format) {
             if (preg_match($regexp, $dateString)) {
                 return DateTimeImmutable::createFromFormat($format, $dateString);

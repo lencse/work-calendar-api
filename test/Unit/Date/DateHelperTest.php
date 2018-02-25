@@ -13,7 +13,7 @@ class DateHelperTest extends TestCase
     public function testDateTime()
     {
         $this->assertEquals(
-            DateTimeImmutable::createFromFormat('Y-m-d', '2017-03-15'),
+            DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2017-03-15 00:00:00'),
             DateHelper::dateTime('2017-03-15')
         );
         $this->assertEquals(

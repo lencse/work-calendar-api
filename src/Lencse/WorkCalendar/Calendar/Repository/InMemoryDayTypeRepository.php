@@ -41,5 +41,18 @@ abstract class InMemoryDayTypeRepository implements DayTypeRepository
     /**
      * @return DayType[]
      */
+    public function getAll(): array
+    {
+        $result = [];
+        foreach ($this->types as $type) {
+            $result[] = $type;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return DayType[]
+     */
     abstract protected function getTypes(): array;
 }
