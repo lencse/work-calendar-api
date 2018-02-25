@@ -8,9 +8,9 @@ use Lencse\WorkCalendar\Calendar\CalendarImp;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
-use Lencse\WorkCalendar\Calendar\Repository\HuDayTypeRepository;
 use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepository;
 use PHPUnit\Framework\TestCase;
+use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
 abstract class CalendarBaseTest extends TestCase
 {
@@ -32,12 +32,12 @@ abstract class CalendarBaseTest extends TestCase
 
     protected function setUp()
     {
-        $this->dayTypeRepo = new HuDayTypeRepository();
+        $this->dayTypeRepo = new MockDayTypeRepository();
         $this->dayRepo = new SpecialDayRepository();
         $this->dayRepo->add(
             new DayImp(
                 DateHelper::dateTime('2018-03-15'),
-                $this->dayTypeRepo->get(HuDayTypeRepository::NON_WORKING_DAY),
+                $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
                 'description'
             )
         );

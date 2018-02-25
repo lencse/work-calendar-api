@@ -4,7 +4,7 @@ namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
-use Lencse\WorkCalendar\Calendar\Repository\HuDayTypeRepository;
+use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
 class CalendarYearTest extends CalendarBaseTest
 {
@@ -17,7 +17,7 @@ class CalendarYearTest extends CalendarBaseTest
             in_array(
                 new DayImp(
                     DateHelper::dateTime('2018-03-15'),
-                    $this->dayTypeRepo->get(HuDayTypeRepository::NON_WORKING_DAY),
+                    $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
                     'description'
                 ),
                 $days,

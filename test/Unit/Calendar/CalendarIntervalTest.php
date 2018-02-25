@@ -4,7 +4,7 @@ namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
-use Lencse\WorkCalendar\Calendar\Repository\HuDayTypeRepository;
+use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
 class CalendarIntervalTest extends CalendarBaseTest
 {
@@ -15,15 +15,15 @@ class CalendarIntervalTest extends CalendarBaseTest
         $expected = [
             new DayImp(
                 DateHelper::dateTime('2018-03-13'),
-                $this->dayTypeRepo->get(HuDayTypeRepository::WORKING_DAY)
+                $this->dayTypeRepo->get(MockDayTypeRepository::WORKING_DAY)
             ),
             new DayImp(
                 DateHelper::dateTime('2018-03-14'),
-                $this->dayTypeRepo->get(HuDayTypeRepository::WORKING_DAY)
+                $this->dayTypeRepo->get(MockDayTypeRepository::WORKING_DAY)
             ),
             new DayImp(
                 DateHelper::dateTime('2018-03-15'),
-                $this->dayTypeRepo->get(HuDayTypeRepository::NON_WORKING_DAY),
+                $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
                 'description'
             ),
         ];

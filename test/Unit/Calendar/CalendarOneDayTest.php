@@ -3,7 +3,7 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Repository\HuDayTypeRepository;
+use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
 class CalendarOneDayTest extends CalendarBaseTest
 {
@@ -12,7 +12,7 @@ class CalendarOneDayTest extends CalendarBaseTest
     {
         $day = $this->calendar->getDay(DateHelper::dateTime('2018-02-23'));
         $this->assertEquals(DateHelper::dateTime('2018-02-23'), $day->getDate());
-        $this->assertEquals($this->dayTypeRepo->get(HuDayTypeRepository::WORKING_DAY), $day->getType());
+        $this->assertEquals($this->dayTypeRepo->get(MockDayTypeRepository::WORKING_DAY), $day->getType());
         $this->assertEquals('', $day->getDescription());
     }
 
@@ -20,7 +20,7 @@ class CalendarOneDayTest extends CalendarBaseTest
     {
         $day = $this->calendar->getDay(DateHelper::dateTime('2018-02-24'));
         $this->assertEquals(DateHelper::dateTime('2018-02-24'), $day->getDate());
-        $this->assertEquals($this->dayTypeRepo->get(HuDayTypeRepository::WEEKEND), $day->getType());
+        $this->assertEquals($this->dayTypeRepo->get(MockDayTypeRepository::WEEKEND), $day->getType());
         $this->assertEquals('', $day->getDescription());
     }
 
@@ -28,7 +28,7 @@ class CalendarOneDayTest extends CalendarBaseTest
     {
         $day = $this->calendar->getDay(DateHelper::dateTime('2018-03-15'));
         $this->assertEquals(DateHelper::dateTime('2018-03-15'), $day->getDate());
-        $this->assertEquals($this->dayTypeRepo->get(HuDayTypeRepository::NON_WORKING_DAY), $day->getType());
+        $this->assertEquals($this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY), $day->getType());
         $this->assertEquals('description', $day->getDescription());
     }
 }

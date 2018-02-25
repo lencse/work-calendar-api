@@ -1,13 +1,15 @@
 <?php
 
-namespace Test\Unit\Calendar;
+namespace Test\Unit\Hu;
 
+use Lencse\Date\DateHelper;
 use Lencse\WorkCalendar\Calendar\Exception\WrongDayTypeException;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
-use Lencse\WorkCalendar\Calendar\Repository\HuDayTypeRepository;
+use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 use PHPUnit\Framework\TestCase;
+use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
-class DayTypeRepositoryTest extends TestCase
+class HuDayTypeRepositoryTest extends TestCase
 {
 
     /**
@@ -34,6 +36,12 @@ class DayTypeRepositoryTest extends TestCase
     {
         $this->expectException(WrongDayTypeException::class);
         $this->repo->get('invalid');
+    }
+
+    public function testDefaultForDate()
+    {
+        $type = $this->repo->getDefaultForDate(DateHelper::dateTime('2018-02-24'));
+        $this->assertEquals(MockDayTypeRepository::WEEKEND, $type->getKey());
     }
 
     private function dayTypeEquals(string $key, string $name, bool $rest, bool $special)
