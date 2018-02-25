@@ -2,8 +2,6 @@
 
 namespace Test\Unit\Calendar;
 
-use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Day\DayImp;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
 class CalendarDayTypesTest extends CalendarBaseTest
@@ -13,5 +11,11 @@ class CalendarDayTypesTest extends CalendarBaseTest
     {
         $types = $this->calendar->getAllTypes();
         $this->assertCount(3, $types);
+    }
+
+    public function testGetType()
+    {
+        $type = $this->calendar->getDayType(MockDayTypeRepository::WEEKEND);
+        $this->assertEquals($this->dayTypeRepo->get(MockDayTypeRepository::WEEKEND), $type);
     }
 }

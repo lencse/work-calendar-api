@@ -39,4 +39,6 @@ interface Calendar
      * @return DayType[]
      */
     public function getAllTypes(): array;
+
+    public function getDayType(string $key): DayType;
 }

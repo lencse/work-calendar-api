@@ -22,18 +22,18 @@ class CalendarImp implements Calendar
     /**
      * @var DayRepository
      */
-    private $dayRepo;
+    private $specialDayRepo;
 
-    public function __construct(DayTypeRepository $dayTypeRepo, DayRepository $dayRepo)
+    public function __construct(DayTypeRepository $dayTypeRepo, DayRepository $specialDayRepo)
     {
         $this->dayTypeRepo = $dayTypeRepo;
-        $this->dayRepo = $dayRepo;
+        $this->specialDayRepo = $specialDayRepo;
     }
 
     public function getDay(DateTimeInterface $date): Day
     {
-        if ($this->dayRepo->has($date)) {
-            return $this->dayRepo->get($date);
+        if ($this->specialDayRepo->has($date)) {
+            return $this->specialDayRepo->get($date);
         }
 
         return new DayImp($date, $this->dayTypeRepo->getDefaultForDate($date));
@@ -73,7 +73,7 @@ class CalendarImp implements Calendar
      */
     public function getAllSpecialDays(): array
     {
-        return $this->dayRepo->getAll();
+        return $this->specialDayRepo->getAll();
     }
 
     /**
@@ -81,7 +81,7 @@ class CalendarImp implements Calendar
      */
     public function getSpecialDaysForYear(int $year): array
     {
-        return $this->dayRepo->getForYear($year);
+        return $this->specialDayRepo->getForYear($year);
     }
 
     /**
@@ -90,5 +90,10 @@ class CalendarImp implements Calendar
     public function getAllTypes(): array
     {
         return $this->dayTypeRepo->getAll();
+    }
+
+    public function getDayType(string $key): DayType
+    {
+        return $this->dayTypeRepo->get($key);
     }
 }
