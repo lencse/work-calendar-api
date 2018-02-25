@@ -74,4 +74,12 @@ class CalendarImp implements Calendar
     {
         return $this->dayRepo->getAll();
     }
+
+    /**
+     * @return Day[]
+     */
+    public function getSpecialDaysForYear(int $year): array
+    {
+        return $this->dayRepo->getForYear($year);
+    }
 }

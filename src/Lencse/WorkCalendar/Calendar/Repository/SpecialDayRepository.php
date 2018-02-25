@@ -9,6 +9,9 @@ use Lencse\WorkCalendar\Calendar\Exception\NoSpecialDayException;
 class SpecialDayRepository implements DayRepository
 {
 
+    /**
+     * @var Day[]
+     */
     private $days = [];
 
     public function has(DateTimeInterface $date): bool
@@ -31,6 +34,25 @@ class SpecialDayRepository implements DayRepository
         $result = [];
         foreach ($this->days as $day) {
             $result[] = $day;
+        }
+        usort($result, function (Day $day1, Day $day2) {
+            return $day1->getDate()->getTimestamp() - $day2->getDate()->getTimestamp();
+        });
+
+        return $result;
+    }
+
+    /**
+     * @param int $year
+     * @return Day[]
+     */
+    public function getForYear(int $year): array
+    {
+        $result = [];
+        foreach ($this->days as $day) {
+            if ((int) $day->getDate()->format('Y') === $year) {
+                $result[] = $day;
+            }
         }
         usort($result, function (Day $day1, Day $day2) {
             return $day1->getDate()->getTimestamp() - $day2->getDate()->getTimestamp();

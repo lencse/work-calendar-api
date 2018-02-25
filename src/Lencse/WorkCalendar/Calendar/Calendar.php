@@ -27,4 +27,9 @@ interface Calendar
      * @return Day[]
      */
     public function getAllSpecialDays(): array;
+
+    /**
+     * @return Day[]
+     */
+    public function getSpecialDaysForYear(int $year): array;
 }

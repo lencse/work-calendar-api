@@ -48,6 +48,13 @@ abstract class CalendarBaseTest extends TestCase
                 'description'
             )
         );
+        $this->dayRepo->add(
+            new DayImp(
+                DateHelper::dateTime('2015-10-23'),
+                $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
+                'description'
+            )
+        );
         $this->calendar = new CalendarImp($this->dayTypeRepo, $this->dayRepo);
     }
 }
