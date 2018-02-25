@@ -11,4 +11,9 @@ interface DayRepository
     public function has(DateTimeInterface $date): bool;
 
     public function get(DateTimeInterface $date): Day;
+
+    /**
+     * @return Day[]
+     */
+    public function getAll(): array;
 }

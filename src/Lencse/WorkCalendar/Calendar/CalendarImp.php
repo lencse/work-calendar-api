@@ -66,4 +66,12 @@ class CalendarImp implements Calendar
             DateTimeImmutable::createFromFormat('Y-m-d', sprintf('%s-12-31', $year))
         );
     }
+
+    /**
+     * @return Day[]
+     */
+    public function getAllSpecialDays(): array
+    {
+        return $this->dayRepo->getAll();
+    }
 }

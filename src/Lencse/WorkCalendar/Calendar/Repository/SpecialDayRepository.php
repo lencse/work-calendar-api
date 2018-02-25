@@ -23,6 +23,22 @@ class SpecialDayRepository implements DayRepository
         return $this->days[$this->format($date)];
     }
 
+    /**
+     * @return Day[]
+     */
+    public function getAll(): array
+    {
+        $result = [];
+        foreach ($this->days as $day) {
+            $result[] = $day;
+        }
+        usort($result, function (Day $day1, Day $day2) {
+            return $day1->getDate()->getTimestamp() - $day2->getDate()->getTimestamp();
+        });
+
+        return $result;
+    }
+
     public function add(Day $day)
     {
         $this->days[$this->format($day->getDate())] = $day;
