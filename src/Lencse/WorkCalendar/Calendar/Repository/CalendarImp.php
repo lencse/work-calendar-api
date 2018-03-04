@@ -82,14 +82,6 @@ class CalendarImp implements Calendar
         return $this->specialDayRepo->getForYear($year);
     }
 
-    /**
-     * @return DayType[]
-     */
-    public function getAllTypes(): array
-    {
-        return $this->dayTypeRepo->getAll();
-    }
-
     public function getDayType(string $key): DayType
     {
         return $this->dayTypeRepo->get($key);

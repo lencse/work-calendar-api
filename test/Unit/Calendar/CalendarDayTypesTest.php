@@ -9,14 +9,15 @@ class CalendarDayTypesTest extends CalendarBaseTest
 
     public function testGetAllTypes()
     {
-//        !da
-        $types = $this->calendar->getAllTypes();
+        $dayTypesRepo = new MockDayTypeRepository();
+        $types = $dayTypesRepo->getAll();
         $this->assertCount(3, $types);
     }
 
     public function testGetType()
     {
-        $type = $this->calendar->getDayType(MockDayTypeRepository::WEEKEND);
+        $dayTypesRepo = new MockDayTypeRepository();
+        $type = $dayTypesRepo->get(MockDayTypeRepository::WEEKEND);
         $this->assertEquals($this->dayTypeRepo->get(MockDayTypeRepository::WEEKEND), $type);
     }
 }

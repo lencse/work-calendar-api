@@ -35,10 +35,5 @@ interface Calendar
      */
     public function getSpecialDaysForYear(int $year): array;
 
-    /**
-     * @return DayType[]
-     */
-    public function getAllTypes(): array;
-
     public function getDayType(string $key): DayType;
 }

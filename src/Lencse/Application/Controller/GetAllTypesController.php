@@ -2,23 +2,24 @@
 
 namespace Lencse\Application\Controller;
 
-use Lencse\WorkCalendar\Calendar\Repository\Calendar;
+use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 
 class GetAllTypesController
 {
 
     /**
-     * @var Calendar
+     * @var DayTypeRepository
      */
-    private $calendar;
+    private $dayTypeRepo;
 
-    public function __construct(Calendar $calendar)
+    public function __construct(DayTypeRepository $dayTypeRepo)
     {
-        $this->calendar = $calendar;
+        $this->dayTypeRepo = $dayTypeRepo;
     }
+
 
     public function __invoke(): array
     {
-        return $this->calendar->getAllTypes();
+        return $this->dayTypeRepo->getAll();
     }
 }
