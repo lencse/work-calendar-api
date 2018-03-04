@@ -4,7 +4,6 @@ namespace Lencse\WorkCalendar\Hu\Repository;
 
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
-use Lencse\WorkCalendar\Calendar\DayType\DayTypeImp;
 use Lencse\WorkCalendar\Calendar\Repository\InMemoryDayTypeRepository;
 
 class HuDayTypeRepository extends InMemoryDayTypeRepository
@@ -36,7 +35,7 @@ class HuDayTypeRepository extends InMemoryDayTypeRepository
         $result = [];
         foreach ($typesArr as $type) {
             [$key, $name, $rest, $special] = $type;
-            $result[$key] = new DayTypeImp($key, $name, $rest, $special);
+            $result[$key] = new DayType($key, $name, $rest, $special);
         }
 
         return $result;

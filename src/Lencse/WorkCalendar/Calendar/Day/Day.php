@@ -5,12 +5,43 @@ namespace Lencse\WorkCalendar\Calendar\Day;
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
 
-interface Day
+class DayImp implements Day
 {
 
-    public function getDate(): DateTimeInterface;
+    /**
+     * @var DateTimeInterface
+     */
+    private $date;
 
-    public function getType(): DayType;
+    /**
+     * @var DayType
+     */
+    private $type;
 
-    public function getDescription(): string;
+    /**
+     * @var string
+     */
+    private $description;
+
+    public function __construct(DateTimeInterface $date, DayType $type, string $description = '')
+    {
+        $this->date = $date;
+        $this->type = $type;
+        $this->description = $description;
+    }
+
+    public function getDate(): DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function getType(): DayType
+    {
+        return $this->type;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
 }

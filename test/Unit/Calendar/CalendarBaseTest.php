@@ -5,7 +5,7 @@ namespace Test\Unit\Calendar;
 use Lencse\Date\DateHelper;
 use Lencse\WorkCalendar\Calendar\Repository\Calendar;
 use Lencse\WorkCalendar\Calendar\Repository\CalendarImp;
-use Lencse\WorkCalendar\Calendar\Day\DayImp;
+use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepository;
@@ -35,21 +35,21 @@ abstract class CalendarBaseTest extends TestCase
         $this->dayTypeRepo = new MockDayTypeRepository();
         $this->dayRepo = new SpecialDayRepository();
         $this->dayRepo->add(
-            new DayImp(
+            new Day(
                 DateHelper::dateTime('2018-03-15'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
                 'description'
             )
         );
         $this->dayRepo->add(
-            new DayImp(
+            new Day(
                 DateHelper::dateTime('2015-03-15'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
                 'description'
             )
         );
         $this->dayRepo->add(
-            new DayImp(
+            new Day(
                 DateHelper::dateTime('2015-10-23'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
                 'description'

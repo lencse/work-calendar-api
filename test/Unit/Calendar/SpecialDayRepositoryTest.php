@@ -3,8 +3,8 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Day\DayImp;
-use Lencse\WorkCalendar\Calendar\DayType\DayTypeImp;
+use Lencse\WorkCalendar\Calendar\Day\Day;
+use Lencse\WorkCalendar\Calendar\DayType\DayType;
 use Lencse\WorkCalendar\Calendar\Exception\NoSpecialDayException;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepository;
@@ -22,9 +22,9 @@ class SpecialDayRepositoryTest extends TestCase
     {
         $this->repo = new SpecialDayRepository();
         $this->repo->add(
-            new DayImp(
+            new Day(
                 DateHelper::dateTime('2018-03-15'),
-                new DayTypeImp('key', 'name', false, false)
+                new DayType('key', 'name', false, false)
             )
         );
     }

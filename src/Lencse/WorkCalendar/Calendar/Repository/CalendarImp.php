@@ -6,7 +6,6 @@ use DateTime;
 use DateTimeInterface;
 use DateTimeImmutable;
 use Lencse\WorkCalendar\Calendar\Day\Day;
-use Lencse\WorkCalendar\Calendar\Day\DayImp;
 
 class CalendarImp implements Calendar
 {
@@ -33,7 +32,7 @@ class CalendarImp implements Calendar
             return $this->specialDayRepo->get($date);
         }
 
-        return new DayImp($date, $this->dayTypeRepo->getDefaultForDate($date));
+        return new Day($date, $this->dayTypeRepo->getDefaultForDate($date));
     }
 
     /**

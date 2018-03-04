@@ -5,6 +5,7 @@ namespace App;
 use Auryn\Injector;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
+use GuzzleHttp\Psr7\Request;
 use Lencse\Application\Controller\GetAllTypesController;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
@@ -28,3 +29,5 @@ $uri = $_SERVER['REQUEST_URI'];
 
 $routeInfo = $dispatcher->dispatch($method, $uri);
 var_dump($routeInfo);
+
+$request = new Request()

@@ -2,14 +2,54 @@
 
 namespace Lencse\WorkCalendar\Calendar\DayType;
 
-interface DayType
+class DayTypeImp implements DayType
 {
 
-    public function getKey(): string;
+    /**
+     * @var string
+     */
+    private $key;
 
-    public function isRestDay(): bool;
+    /**
+     * @var bool
+     */
+    private $restDay;
 
-    public function getName(): string;
+    /**
+     * @var string
+     */
+    private $name;
 
-    public function isSpecial(): bool;
+    /**
+     * @var bool
+     */
+    private $special;
+
+    public function __construct(string $key, string $name, bool $restDay, bool $special)
+    {
+        $this->key = $key;
+        $this->restDay = $restDay;
+        $this->name = $name;
+        $this->special = $special;
+    }
+
+    public function getKey(): string
+    {
+        return $this->key;
+    }
+
+    public function isRestDay(): bool
+    {
+        return $this->restDay;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function isSpecial(): bool
+    {
+        return $this->special;
+    }
 }

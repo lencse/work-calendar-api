@@ -4,7 +4,6 @@ namespace Test\Unit\Calendar\Mock;
 
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
-use Lencse\WorkCalendar\Calendar\DayType\DayTypeImp;
 use Lencse\WorkCalendar\Calendar\Repository\InMemoryDayTypeRepository;
 
 class MockDayTypeRepository extends InMemoryDayTypeRepository
@@ -33,7 +32,7 @@ class MockDayTypeRepository extends InMemoryDayTypeRepository
         $result = [];
         foreach ($typesArr as $type) {
             [$key, $name, $rest, $special] = $type;
-            $result[$key] = new DayTypeImp($key, $name, $rest, $special);
+            $result[$key] = new DayType($key, $name, $rest, $special);
         }
 
         return $result;
