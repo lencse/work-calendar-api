@@ -7,7 +7,6 @@ use DateTimeInterface;
 use DateTimeImmutable;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
 
 class CalendarImp implements Calendar
 {
@@ -45,7 +44,7 @@ class CalendarImp implements Calendar
     public function getInterval(DateTimeInterface $startDate, DateTimeInterface $endDate): array
     {
         $result = [];
-        $day = DateTime::createFromFormat('Y-m-d H:i:s', $startDate->format('Y-m-d'). ' 00:00:00');
+        $day = DateTime::createFromFormat('Y-m-d H:i:s', $startDate->format('Y-m-d') . ' 00:00:00');
         while ($day->getTimestamp() <= $endDate->getTimestamp()) {
             $result[] = $this->getDay(clone $day);
             $day = $day->add(new \DateInterval('P1D'));
@@ -64,26 +63,5 @@ class CalendarImp implements Calendar
             DateTimeImmutable::createFromFormat('Y-m-d H:i:s', sprintf('%s-01-01 00:00:00', $year)),
             DateTimeImmutable::createFromFormat('Y-m-d H:i:s', sprintf('%s-12-31 00:00:00', $year))
         );
-    }
-
-    /**
-     * @return Day[]
-     */
-    public function getAllSpecialDays(): array
-    {
-        return $this->specialDayRepo->getAll();
-    }
-
-    /**
-     * @return Day[]
-     */
-    public function getSpecialDaysForYear(int $year): array
-    {
-        return $this->specialDayRepo->getForYear($year);
-    }
-
-    public function getDayType(string $key): DayType
-    {
-        return $this->dayTypeRepo->get($key);
     }
 }

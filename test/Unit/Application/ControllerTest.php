@@ -3,6 +3,7 @@
 namespace Test\Unit\Application;
 
 use Lencse\Application\Controller\GetAllTypesController;
+use Lencse\Application\Controller\GetTypeController;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
 use PHPUnit\Framework\TestCase;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
@@ -18,5 +19,12 @@ class ControllerTest extends TestCase
         foreach ($response as $item) {
             $this->assertInstanceOf(DayType::class, $item);
         }
+    }
+
+    public function testGetType()
+    {
+        $controller = new GetTypeController(new MockDayTypeRepository());
+        $response = $controller(MockDayTypeRepository::WEEKEND);
+        $this->assertEquals('weekend', $response->getKey());
     }
 }

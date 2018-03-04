@@ -11,7 +11,7 @@ class CalendarSpecialDaysTest extends CalendarBaseTest
 
     public function testGetAllSpecialDays()
     {
-        $days = $this->calendar->getAllSpecialDays();
+        $days = $this->dayRepo->getAll();
         $expected = [
             new DayImp(
                 DateHelper::dateTime('2015-03-15'),
@@ -34,7 +34,7 @@ class CalendarSpecialDaysTest extends CalendarBaseTest
 
     public function testGetSpecialDaysForYear()
     {
-        $days = $this->calendar->getSpecialDaysForYear(2015);
+        $days = $this->dayRepo->getForYear(2015);
         $expected = [
             new DayImp(
                 DateHelper::dateTime('2015-03-15'),
