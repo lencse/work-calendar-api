@@ -3,6 +3,9 @@
 namespace App;
 
 use Auryn\Injector;
+use FastRoute\RouteCollector;
+use function FastRoute\simpleDispatcher;
+use Lencse\Application\Controller\GetAllTypesController;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 
@@ -14,4 +17,14 @@ $injector->alias(DayTypeRepository::class, HuDayTypeRepository::class);
 
 $repo = $injector->make(DayTypeRepository::class);
 
-var_dump($repo->getAll());
+//var_dump($repo->getAll());
+
+$dispatcher = simpleDispatcher(function (RouteCollector $routes) {
+    $routes->addRoute('GET', '/api/v1/day-types', GetAllTypesController::class);
+});
+
+$method = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
+
+$routeInfo = $dispatcher->dispatch($method, $uri);
+var_dump($routeInfo);
