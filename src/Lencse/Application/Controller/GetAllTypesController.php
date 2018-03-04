@@ -17,7 +17,6 @@ class GetAllTypesController
         $this->dayTypeRepo = $dayTypeRepo;
     }
 
-
     public function __invoke(): array
     {
         return $this->dayTypeRepo->getAll();

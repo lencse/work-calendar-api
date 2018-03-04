@@ -4,11 +4,12 @@ namespace Test\Unit\Application;
 
 use Lencse\Application\Controller\GetAllTypesController;
 use Lencse\Application\Controller\GetTypeController;
+use Lencse\Application\Exception\NotFoundException;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
 use PHPUnit\Framework\TestCase;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
-class ControllerTest extends TestCase
+class TypeControllerTest extends TestCase
 {
 
     public function testGetAllTypes()
@@ -26,5 +27,12 @@ class ControllerTest extends TestCase
         $controller = new GetTypeController(new MockDayTypeRepository());
         $response = $controller(MockDayTypeRepository::WEEKEND);
         $this->assertEquals('weekend', $response->getKey());
+    }
+
+    public function testExceptionForWrongType()
+    {
+        $controller = new GetTypeController(new MockDayTypeRepository());
+        $this->expectException(NotFoundException::class);
+        $controller('invalid');
     }
 }

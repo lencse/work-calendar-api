@@ -20,6 +20,11 @@ abstract class InMemoryDayTypeRepository implements DayTypeRepository
         }
     }
 
+    public function has(string $key): bool
+    {
+        return array_key_exists($key, $this->types);
+    }
+
     public function get(string $key): DayType
     {
         $this->validateKey($key);
@@ -29,7 +34,7 @@ abstract class InMemoryDayTypeRepository implements DayTypeRepository
 
     private function validateKey(string $key): void
     {
-        if (!array_key_exists($key, $this->types)) {
+        if (!$this->has($key)) {
             throw new WrongDayTypeException(sprintf(
                 'Wrong day type key: %s. Valid day keys are: %s',
                 $key,

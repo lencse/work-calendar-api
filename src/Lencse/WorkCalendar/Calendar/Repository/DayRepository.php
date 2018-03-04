@@ -18,6 +18,7 @@ interface DayRepository
     public function getAll(): array;
 
     /**
+     * @param int $year
      * @return Day[]
      */
     public function getForYear(int $year): array;
