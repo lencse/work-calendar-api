@@ -3,7 +3,7 @@
 namespace Test\Unit\Application;
 
 use Lencse\Application\Controller\GetAllTypesController;
-use Lencse\WorkCalendar\Calendar\CalendarImp;
+use Lencse\WorkCalendar\Calendar\Repository\CalendarImp;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
 use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepository;
 use PHPUnit\Framework\TestCase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar;
+namespace Lencse\WorkCalendar\Calendar\Repository;
 
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\Day\Day;

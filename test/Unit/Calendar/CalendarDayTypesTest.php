@@ -9,6 +9,7 @@ class CalendarDayTypesTest extends CalendarBaseTest
 
     public function testGetAllTypes()
     {
+//        !da
         $types = $this->calendar->getAllTypes();
         $this->assertCount(3, $types);
     }

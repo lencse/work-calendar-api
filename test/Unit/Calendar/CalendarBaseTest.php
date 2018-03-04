@@ -3,8 +3,8 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Calendar;
-use Lencse\WorkCalendar\Calendar\CalendarImp;
+use Lencse\WorkCalendar\Calendar\Repository\Calendar;
+use Lencse\WorkCalendar\Calendar\Repository\CalendarImp;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;

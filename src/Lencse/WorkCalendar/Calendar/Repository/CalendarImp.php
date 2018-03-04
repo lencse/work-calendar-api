@@ -1,6 +1,6 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar;
+namespace Lencse\WorkCalendar\Calendar\Repository;
 
 use DateTime;
 use DateTimeInterface;
@@ -8,8 +8,6 @@ use DateTimeImmutable;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Day\DayImp;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
-use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
-use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 
 class CalendarImp implements Calendar
 {

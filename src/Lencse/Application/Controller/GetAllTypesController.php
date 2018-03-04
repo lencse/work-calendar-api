@@ -2,7 +2,7 @@
 
 namespace Lencse\Application\Controller;
 
-use Lencse\WorkCalendar\Calendar\Calendar;
+use Lencse\WorkCalendar\Calendar\Repository\Calendar;
 
 class GetAllTypesController
 {
