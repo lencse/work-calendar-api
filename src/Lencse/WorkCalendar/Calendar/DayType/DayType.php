@@ -2,7 +2,7 @@
 
 namespace Lencse\WorkCalendar\Calendar\DayType;
 
-class DayTypeImp implements DayType
+class DayType
 {
 
     /**

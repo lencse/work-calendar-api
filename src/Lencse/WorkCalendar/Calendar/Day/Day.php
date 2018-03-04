@@ -5,7 +5,7 @@ namespace Lencse\WorkCalendar\Calendar\Day;
 use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
 
-class DayImp implements Day
+class Day
 {
 
     /**
