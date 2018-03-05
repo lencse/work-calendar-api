@@ -2,9 +2,9 @@
 
 namespace Test\Unit\Application;
 
-use GuzzleHttp\Psr7\ServerRequest;
 use Lencse\Application\Controller\GetADayController;
 use Lencse\Application\Controller\GetDayIntervalController;
+use Lencse\Application\Exception\BadRequestException;
 use Lencse\WorkCalendar\Calendar\Repository\Calendar;
 use Lencse\WorkCalendar\Calendar\Repository\CalendarImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
@@ -54,5 +54,19 @@ class DayControllerTest extends TestCase
         ]);
         $response =  $controller($request);
         $this->assertCount(3, $response);
+    }
+
+    public function testExceptionForMissingFrom()
+    {
+        $controller = new GetDayIntervalController($this->calendar);
+        $this->expectException(BadRequestException::class);
+        $controller(new FromArrayRequest(['to' => '2018-03-14']));
+    }
+
+    public function testExceptionForMissingTo()
+    {
+        $controller = new GetDayIntervalController($this->calendar);
+        $this->expectException(BadRequestException::class);
+        $controller(new FromArrayRequest(['from' => '2018-03-14']));
     }
 }
