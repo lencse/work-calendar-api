@@ -2,6 +2,7 @@
 
 namespace Lencse\Application\Controller;
 
+use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 
 class GetAllSpecialDaysController
@@ -17,7 +18,10 @@ class GetAllSpecialDaysController
         $this->dayRepository = $dayRepository;
     }
 
-    public function __invoke()
+    /**
+     * @return Day[]
+     */
+    public function __invoke(): array
     {
         return $this->dayRepository->getAll();
     }

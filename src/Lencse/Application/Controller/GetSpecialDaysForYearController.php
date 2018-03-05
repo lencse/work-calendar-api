@@ -2,7 +2,7 @@
 
 namespace Lencse\Application\Controller;
 
-use Lencse\Application\Http\Request;
+use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 
 class GetSpecialDaysForYearController
@@ -18,6 +18,10 @@ class GetSpecialDaysForYearController
         $this->dayRepository = $dayRepository;
     }
 
+    /**
+     * @param int $year
+     * @return Day[]
+     */
     public function __invoke(int $year): array
     {
         return $this->dayRepository->getForYear($year);
