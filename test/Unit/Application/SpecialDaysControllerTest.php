@@ -18,7 +18,7 @@ class SpecialDaysControllerTest extends TestCase
 
     protected function setUp()
     {
-        $factory =  new SpecialDayRepositoryFactory(
+        $factory = new SpecialDayRepositoryFactory(
             new MockDayTypeRepository(),
             [
                 ['2018-03-15', MockDayTypeRepository::NON_WORKING_DAY, ''],
@@ -51,26 +51,4 @@ class SpecialDaysControllerTest extends TestCase
 
         $this->assertEquals([], $response);
     }
-
-//    public function testGetForYear()
-//    {
-//        $controller = new GetAllSpecialDaysForYearController($this->repo);
-//        $response = $controller();
-////
-//        $this->assertCount(1, $response);
-//    }
-
-//    public function testGetType()
-//    {
-//        $controller = new GetTypeController(new MockDayTypeRepository());
-//        $response = $controller(MockDayTypeRepository::WEEKEND);
-//        $this->assertEquals('weekend', $response->getKey());
-//    }
-//
-//    public function testExceptionForWrongType()
-//    {
-//        $controller = new GetTypeController(new MockDayTypeRepository());
-//        $this->expectException(NotFoundException::class);
-//        $controller('invalid');
-//    }
 }
