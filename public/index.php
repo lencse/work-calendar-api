@@ -30,4 +30,4 @@ $uri = $_SERVER['REQUEST_URI'];
 $routeInfo = $dispatcher->dispatch($method, $uri);
 var_dump($routeInfo);
 
-$request = new Request();
+//$request = new Request();
