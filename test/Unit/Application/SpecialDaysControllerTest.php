@@ -2,7 +2,8 @@
 
 namespace Test\Unit\Application;
 
-use Lencse\Application\Controller\GetSpecialDaysController;
+use Lencse\Application\Controller\GetAllSpecialDaysController;
+use Lencse\Application\Controller\GetSpecialDaysForYearController;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepositoryFactory;
 use PHPUnit\Framework\TestCase;
@@ -30,7 +31,7 @@ class SpecialDaysControllerTest extends TestCase
 
     public function testGetAllDays()
     {
-        $controller = new GetSpecialDaysController($this->repo);
+        $controller = new GetAllSpecialDaysController($this->repo);
         $response = $controller(new FromArrayRequest([]));
 
         $this->assertCount(2, $response);
@@ -38,16 +39,16 @@ class SpecialDaysControllerTest extends TestCase
 
     public function testGetForYear()
     {
-        $controller = new GetSpecialDaysController($this->repo);
-        $response = $controller(new FromArrayRequest(['year' => 2018]));
+        $controller = new GetSpecialDaysForYearController($this->repo);
+        $response = $controller(2018);
 
         $this->assertCount(1, $response);
     }
 
     public function testGetForEmptyYear()
     {
-        $controller = new GetSpecialDaysController($this->repo);
-        $response = $controller(new FromArrayRequest(['year' => 2017]));
+        $controller = new GetSpecialDaysForYearController($this->repo);
+        $response = $controller(2017);
 
         $this->assertEquals([], $response);
     }
