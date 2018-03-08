@@ -30,7 +30,7 @@ class SpecialDaysControllerTest extends TestCase
         $controller = new GetAllSpecialDaysController($this->repo);
         $response = $controller(new FromArrayRequest([]));
 
-        $this->assertCount(1, $response);
+        $this->assertEquals($this->repo->getAll(), $response);
     }
 
     public function testGetForYear(): void
@@ -38,7 +38,7 @@ class SpecialDaysControllerTest extends TestCase
         $controller = new GetSpecialDaysForYearController($this->repo);
         $response = $controller(2018);
 
-        $this->assertCount(1, $response);
+        $this->assertEquals($this->repo->getForYear(2018), $response);
     }
 
     public function testGetForEmptyYear(): void
