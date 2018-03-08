@@ -32,7 +32,7 @@ abstract class CalendarBaseTest extends TestCase
      */
     protected $dayRepo;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->dayTypeRepo = new MockDayTypeRepository();
         $factory = new MockDayRepositoryFactory($this->dayTypeRepo);

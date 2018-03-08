@@ -32,7 +32,7 @@ abstract class SpecialDayRepositoryFactory
     }
 
     /**
-     * @return string[]
+     * @return string[][]
      */
     abstract protected function getConfig(): array;
 }

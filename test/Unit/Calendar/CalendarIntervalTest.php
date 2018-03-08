@@ -9,7 +9,7 @@ use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 class CalendarIntervalTest extends CalendarBaseTest
 {
 
-    public function testGetWorkingDay()
+    public function testGetWorkingDay(): void
     {
         $days = $this->calendar->getInterval(DateHelper::dateTime('2018-03-13'), DateHelper::dateTime('2018-03-15'));
         $expected = [

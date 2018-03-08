@@ -17,13 +17,13 @@ class HuDayTypeRepositoryTest extends TestCase
      */
     private $repo;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->repo = new HuDayTypeRepository();
     }
 
 
-    public function testGet()
+    public function testGet(): void
     {
         $this->dayTypeEquals('non-working-day', 'Munkaszüneti nap', true, true);
         $this->dayTypeEquals('switched-rest-day', 'Áthelyezett pihenőnap', true, true);
@@ -32,19 +32,19 @@ class HuDayTypeRepositoryTest extends TestCase
         $this->dayTypeEquals('weekend', 'Heti pihenőnap', true, false);
     }
 
-    public function testArgument()
+    public function testArgument(): void
     {
         $this->expectException(WrongDayTypeException::class);
         $this->repo->get('invalid');
     }
 
-    public function testDefaultForDate()
+    public function testDefaultForDate(): void
     {
         $type = $this->repo->getDefaultForDate(DateHelper::dateTime('2018-02-24'));
         $this->assertEquals(MockDayTypeRepository::WEEKEND, $type->getKey());
     }
 
-    private function dayTypeEquals(string $key, string $name, bool $rest, bool $special)
+    private function dayTypeEquals(string $key, string $name, bool $rest, bool $special): void
     {
         $dayType = $this->repo->get($key);
         $this->assertEquals($key, $dayType->getKey());

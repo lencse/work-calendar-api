@@ -33,14 +33,14 @@ class DayControllerTest extends TestCase
         $this->calendar = new CalendarImp(new HuDayTypeRepository(), $this->repo);
     }
 
-    public function testGetADay()
+    public function testGetADay(): void
     {
         $controller = new GetADayController($this->calendar);
         $this->assertEquals(MockDayTypeRepository::NON_WORKING_DAY, $controller('2018-01-01')->getType()->getKey());
         $this->assertEquals(MockDayTypeRepository::WORKING_DAY, $controller('2018-01-02')->getType()->getKey());
     }
 
-    public function testGetInterval()
+    public function testGetInterval(): void
     {
         $controller = new GetDayIntervalController($this->calendar);
         $request = new FromArrayRequest([
@@ -51,14 +51,14 @@ class DayControllerTest extends TestCase
         $this->assertCount(3, $response);
     }
 
-    public function testExceptionForMissingFrom()
+    public function testExceptionForMissingFrom(): void
     {
         $controller = new GetDayIntervalController($this->calendar);
         $this->expectException(BadRequestException::class);
         $controller(new FromArrayRequest(['to' => '2018-03-14']));
     }
 
-    public function testExceptionForMissingTo()
+    public function testExceptionForMissingTo(): void
     {
         $controller = new GetDayIntervalController($this->calendar);
         $this->expectException(BadRequestException::class);

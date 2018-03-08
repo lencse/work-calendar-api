@@ -46,7 +46,7 @@ class InMemoryDayRepository implements DayRepository
         foreach ($this->days as $day) {
             $result[] = $day;
         }
-        usort($result, function (Day $day1, Day $day2) {
+        usort($result, function (Day $day1, Day $day2): int {
             return $day1->getDate()->getTimestamp() - $day2->getDate()->getTimestamp();
         });
 
@@ -65,14 +65,14 @@ class InMemoryDayRepository implements DayRepository
                 $result[] = $day;
             }
         }
-        usort($result, function (Day $day1, Day $day2) {
+        usort($result, function (Day $day1, Day $day2): int {
             return $day1->getDate()->getTimestamp() - $day2->getDate()->getTimestamp();
         });
 
         return $result;
     }
 
-    private function add(Day $day)
+    private function add(Day $day): void
     {
         $this->days[$this->format($day->getDate())] = $day;
     }

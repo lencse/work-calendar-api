@@ -8,7 +8,7 @@ class MockDayRepositoryFactory extends SpecialDayRepositoryFactory
 {
 
     /**
-     * @return string[]
+     * @return string[][]
      */
     protected function getConfig(): array
     {

@@ -6,8 +6,9 @@ use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepositoryFactory;
 
 class HuSpecialDayRepositoryFactory extends SpecialDayRepositoryFactory
 {
+
     /**
-     * @return string[]
+     * @return string[][]
      */
     protected function getConfig(): array
     {

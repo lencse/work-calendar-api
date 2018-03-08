@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 class DayTest extends TestCase
 {
 
-    public function testDayCreation()
+    public function testDayCreation(): void
     {
         $day = new Day(
             DateHelper::dateTime('2018-03-15'),
@@ -22,7 +22,7 @@ class DayTest extends TestCase
         $this->assertEquals(new DayType('key', 'name', true, false), $day->getType());
     }
 
-    public function testDayCreationWithEmptyDescription()
+    public function testDayCreationWithEmptyDescription(): void
     {
         $day = new Day(
             DateHelper::dateTime('2017-03-18'),

@@ -8,7 +8,7 @@ use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 class CalendarOneDayTest extends CalendarBaseTest
 {
 
-    public function testGetWorkingDay()
+    public function testGetWorkingDay(): void
     {
         $day = $this->calendar->getDay(DateHelper::dateTime('2018-02-23'));
         $this->assertEquals(DateHelper::dateTime('2018-02-23'), $day->getDate());
@@ -16,7 +16,7 @@ class CalendarOneDayTest extends CalendarBaseTest
         $this->assertEquals('', $day->getDescription());
     }
 
-    public function testGetWeekend()
+    public function testGetWeekend(): void
     {
         $day = $this->calendar->getDay(DateHelper::dateTime('2018-02-24'));
         $this->assertEquals(DateHelper::dateTime('2018-02-24'), $day->getDate());
@@ -24,7 +24,7 @@ class CalendarOneDayTest extends CalendarBaseTest
         $this->assertEquals('', $day->getDescription());
     }
 
-    public function testGetNonWorkingDay()
+    public function testGetNonWorkingDay(): void
     {
         $day = $this->calendar->getDay(DateHelper::dateTime('2018-03-15'));
         $this->assertEquals(DateHelper::dateTime('2018-03-15'), $day->getDate());

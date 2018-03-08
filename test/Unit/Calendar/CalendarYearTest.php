@@ -9,7 +9,7 @@ use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 class CalendarYearTest extends CalendarBaseTest
 {
 
-    public function testGetNonLeapYear()
+    public function testGetNonLeapYear(): void
     {
         $days = $this->calendar->getYear(2018);
         $this->assertCount(365, $days);
@@ -26,7 +26,7 @@ class CalendarYearTest extends CalendarBaseTest
         );
     }
 
-    public function testGetLeapYear()
+    public function testGetLeapYear(): void
     {
         $days = $this->calendar->getYear(2016);
         $this->assertCount(366, $days);

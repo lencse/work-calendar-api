@@ -2,6 +2,7 @@
 
 namespace Lencse\WorkCalendar\Calendar\Repository;
 
+use DateInterval;
 use DateTime;
 use DateTimeInterface;
 use DateTimeImmutable;
@@ -43,10 +44,11 @@ class CalendarImp implements Calendar
     public function getInterval(DateTimeInterface $startDate, DateTimeInterface $endDate): array
     {
         $result = [];
+        /** @var DateTime $day */
         $day = DateTime::createFromFormat('Y-m-d H:i:s', $startDate->format('Y-m-d') . ' 00:00:00');
         while ($day->getTimestamp() <= $endDate->getTimestamp()) {
             $result[] = $this->getDay(clone $day);
-            $day = $day->add(new \DateInterval('P1D'));
+            $day = $day->add(new DateInterval('P1D'));
         }
 
         return $result;

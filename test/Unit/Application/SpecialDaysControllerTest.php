@@ -19,13 +19,13 @@ class SpecialDaysControllerTest extends TestCase
      */
     private $repo;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $factory = new HuSpecialDayRepositoryFactory(new HuDayTypeRepository());
         $this->repo = $factory->createRepository();
     }
 
-    public function testGetAllDays()
+    public function testGetAllDays(): void
     {
         $controller = new GetAllSpecialDaysController($this->repo);
         $response = $controller(new FromArrayRequest([]));
@@ -33,7 +33,7 @@ class SpecialDaysControllerTest extends TestCase
         $this->assertCount(1, $response);
     }
 
-    public function testGetForYear()
+    public function testGetForYear(): void
     {
         $controller = new GetSpecialDaysForYearController($this->repo);
         $response = $controller(2018);
@@ -41,7 +41,7 @@ class SpecialDaysControllerTest extends TestCase
         $this->assertCount(1, $response);
     }
 
-    public function testGetForEmptyYear()
+    public function testGetForEmptyYear(): void
     {
         $controller = new GetSpecialDaysForYearController($this->repo);
         $response = $controller(2017);

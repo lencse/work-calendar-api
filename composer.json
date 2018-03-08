@@ -22,7 +22,8 @@
         "phpmd/phpmd": "^2.6",
         "squizlabs/php_codesniffer": "^3.2",
         "lencse/ci-tools": "^3.0",
-        "phploc/phploc": "^4.0"
+        "phploc/phploc": "^4.0",
+        "vimeo/psalm": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -48,6 +49,7 @@
         "md": "phpmd src/ text phpmd.xml && phpmd test/ text phpmd.xml",
         "cs": "phpcs --standard=PSR2 src test",
         "loc": "phploc --count-tests -vvv src test",
-        "test-all": "composer test-coverage && composer min-coverage && composer md && composer cs && composer loc"
+        "psalm": "psalm",
+        "test-all": "composer test-coverage && composer min-coverage && composer md && composer cs && composer psalm && composer loc"
     }
 }

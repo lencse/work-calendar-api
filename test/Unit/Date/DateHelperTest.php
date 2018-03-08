@@ -10,7 +10,7 @@ use DateTimeImmutable;
 class DateHelperTest extends TestCase
 {
 
-    public function testDateTime()
+    public function testDateTime(): void
     {
         $this->assertEquals(
             DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2017-03-15 00:00:00'),
@@ -22,7 +22,7 @@ class DateHelperTest extends TestCase
         );
     }
 
-    public function testWrongFormat()
+    public function testWrongFormat(): void
     {
         $this->expectException(WrongDateFormatException::class);
         DateHelper::dateTime('2017-03-15 10-15-00');

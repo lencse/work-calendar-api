@@ -12,7 +12,7 @@ use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 class TypeControllerTest extends TestCase
 {
 
-    public function testGetAllTypes()
+    public function testGetAllTypes(): void
     {
         $controller = new GetAllTypesController(new MockDayTypeRepository());
         $response = $controller();
@@ -22,14 +22,14 @@ class TypeControllerTest extends TestCase
         }
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $controller = new GetTypeController(new MockDayTypeRepository());
         $response = $controller(MockDayTypeRepository::WEEKEND);
         $this->assertEquals('weekend', $response->getKey());
     }
 
-    public function testExceptionForWrongType()
+    public function testExceptionForWrongType(): void
     {
         $controller = new GetTypeController(new MockDayTypeRepository());
         $this->expectException(NotFoundException::class);

@@ -30,8 +30,8 @@ class GetDayIntervalController
         if (!$request->hasParam('to') || !$request->hasParam('from')) {
             throw new BadRequestException();
         }
-        $from = DateTimeImmutable::createFromFormat('Y-m-d', $request->getParam('from'));
-        $to = DateTimeImmutable::createFromFormat('Y-m-d', $request->getParam('to'));
+        $from = DateTimeImmutable::createFromFormat('Y-m-d', (string) $request->getParam('from'));
+        $to = DateTimeImmutable::createFromFormat('Y-m-d', (string) $request->getParam('to'));
         return $this->calendar->getInterval($from, $to);
     }
 }

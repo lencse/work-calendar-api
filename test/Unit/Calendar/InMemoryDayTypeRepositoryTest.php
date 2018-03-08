@@ -16,25 +16,25 @@ class InMemoryDayTypeRepositoryTest extends TestCase
      */
     private $repo;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->repo = new MockDayTypeRepository();
     }
 
-    public function testGet()
+    public function testGet(): void
     {
         $this->dayTypeEquals('non-working-day', 'Munkaszüneti nap', true, true);
         $this->dayTypeEquals('working-day', 'Munkanap', false, false);
         $this->dayTypeEquals('weekend', 'Heti pihenőnap', true, false);
     }
 
-    public function testArgument()
+    public function testArgument(): void
     {
         $this->expectException(WrongDayTypeException::class);
         $this->repo->get('invalid');
     }
 
-    public function testDefaultForDate()
+    public function testDefaultForDate(): void
     {
         $type = $this->repo->getDefaultForDate(DateHelper::dateTime('2018-02-24'));
         $this->assertEquals(MockDayTypeRepository::WEEKEND, $type->getKey());

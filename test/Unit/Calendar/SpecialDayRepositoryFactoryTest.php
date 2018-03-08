@@ -11,7 +11,7 @@ use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 class SpecialDayRepositoryFactoryTest extends TestCase
 {
 
-    public function testFactory()
+    public function testFactory(): void
     {
         $factory = new MockDayRepositoryFactory(new MockDayTypeRepository());
         $repo = $factory->createRepository();
@@ -20,7 +20,7 @@ class SpecialDayRepositoryFactoryTest extends TestCase
     }
 
 
-    public function testArgument()
+    public function testArgument(): void
     {
         $factory = new MockDayRepositoryFactory(new MockDayTypeRepository());
         $repo = $factory->createRepository();

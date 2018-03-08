@@ -9,7 +9,7 @@ use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 class CalendarSpecialDaysTest extends CalendarBaseTest
 {
 
-    public function testGetAllSpecialDays()
+    public function testGetAllSpecialDays(): void
     {
         $days = $this->dayRepo->getAll();
         $expected = [
@@ -32,7 +32,7 @@ class CalendarSpecialDaysTest extends CalendarBaseTest
         $this->assertEquals($expected, $days);
     }
 
-    public function testGetSpecialDaysForYear()
+    public function testGetSpecialDaysForYear(): void
     {
         $days = $this->dayRepo->getForYear(2015);
         $expected = [
