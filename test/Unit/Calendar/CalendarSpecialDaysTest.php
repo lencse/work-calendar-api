@@ -16,17 +16,17 @@ class CalendarSpecialDaysTest extends CalendarBaseTest
             new Day(
                 DateHelper::dateTime('2015-03-15'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
+                'Description'
             ),
             new Day(
                 DateHelper::dateTime('2015-10-23'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
+                'Description'
             ),
             new Day(
                 DateHelper::dateTime('2018-03-15'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
+                'Description'
             ),
         ];
         $this->assertEquals($expected, $days);
@@ -39,12 +39,12 @@ class CalendarSpecialDaysTest extends CalendarBaseTest
             new Day(
                 DateHelper::dateTime('2015-03-15'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
+                'Description'
             ),
             new Day(
                 DateHelper::dateTime('2015-10-23'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
+                'Description'
             ),
         ];
         $this->assertEquals($expected, $days);

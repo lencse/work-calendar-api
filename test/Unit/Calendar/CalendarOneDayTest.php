@@ -29,6 +29,6 @@ class CalendarOneDayTest extends CalendarBaseTest
         $day = $this->calendar->getDay(DateHelper::dateTime('2018-03-15'));
         $this->assertEquals(DateHelper::dateTime('2018-03-15'), $day->getDate());
         $this->assertEquals($this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY), $day->getType());
-        $this->assertEquals('description', $day->getDescription());
+        $this->assertEquals('Description', $day->getDescription());
     }
 }

@@ -24,7 +24,7 @@ class CalendarIntervalTest extends CalendarBaseTest
             new Day(
                 DateHelper::dateTime('2018-03-15'),
                 $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
+                'Description'
             ),
         ];
         $this->assertEquals($expected, $days);

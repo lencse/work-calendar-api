@@ -6,13 +6,24 @@ use DateTimeInterface;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Exception\NoSpecialDayException;
 
-class SpecialDayRepository implements DayRepository
+class InMemoryDayRepository implements DayRepository
 {
 
     /**
      * @var Day[]
      */
     private $days = [];
+
+    /**
+     * @param Day[] $days
+     */
+    public function __construct(array $days)
+    {
+        foreach ($days as $day) {
+            $this->add($day);
+        }
+    }
+
 
     public function has(DateTimeInterface $date): bool
     {
@@ -61,7 +72,7 @@ class SpecialDayRepository implements DayRepository
         return $result;
     }
 
-    public function add(Day $day)
+    private function add(Day $day)
     {
         $this->days[$this->format($day->getDate())] = $day;
     }

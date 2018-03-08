@@ -6,6 +6,8 @@ use Lencse\Application\Controller\GetAllSpecialDaysController;
 use Lencse\Application\Controller\GetSpecialDaysForYearController;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepositoryFactory;
+use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
+use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
 use PHPUnit\Framework\TestCase;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
@@ -19,13 +21,7 @@ class SpecialDaysControllerTest extends TestCase
 
     protected function setUp()
     {
-        $factory = new SpecialDayRepositoryFactory(
-            new MockDayTypeRepository(),
-            [
-                ['2018-03-15', MockDayTypeRepository::NON_WORKING_DAY, ''],
-                ['2019-03-15', MockDayTypeRepository::NON_WORKING_DAY, '']
-            ]
-        );
+        $factory = new HuSpecialDayRepositoryFactory(new HuDayTypeRepository());
         $this->repo = $factory->createRepository();
     }
 
@@ -34,7 +30,7 @@ class SpecialDaysControllerTest extends TestCase
         $controller = new GetAllSpecialDaysController($this->repo);
         $response = $controller(new FromArrayRequest([]));
 
-        $this->assertCount(2, $response);
+        $this->assertCount(1, $response);
     }
 
     public function testGetForYear()

@@ -9,7 +9,9 @@ use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepository;
+use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepositoryFactory;
 use PHPUnit\Framework\TestCase;
+use Test\Unit\Calendar\Mock\MockDayRepositoryFactory;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
 abstract class CalendarBaseTest extends TestCase
@@ -33,28 +35,8 @@ abstract class CalendarBaseTest extends TestCase
     protected function setUp()
     {
         $this->dayTypeRepo = new MockDayTypeRepository();
-        $this->dayRepo = new SpecialDayRepository();
-        $this->dayRepo->add(
-            new Day(
-                DateHelper::dateTime('2018-03-15'),
-                $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
-            )
-        );
-        $this->dayRepo->add(
-            new Day(
-                DateHelper::dateTime('2015-03-15'),
-                $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
-            )
-        );
-        $this->dayRepo->add(
-            new Day(
-                DateHelper::dateTime('2015-10-23'),
-                $this->dayTypeRepo->get(MockDayTypeRepository::NON_WORKING_DAY),
-                'description'
-            )
-        );
+        $factory = new MockDayRepositoryFactory($this->dayTypeRepo);
+        $this->dayRepo = $factory->createRepository();
         $this->calendar = new CalendarImp($this->dayTypeRepo, $this->dayRepo);
     }
 }

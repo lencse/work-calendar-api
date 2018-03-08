@@ -8,7 +8,8 @@ use Lencse\Application\Exception\BadRequestException;
 use Lencse\WorkCalendar\Calendar\Repository\Calendar;
 use Lencse\WorkCalendar\Calendar\Repository\CalendarImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
-use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepositoryFactory;
+use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
+use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
 use PHPUnit\Framework\TestCase;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
@@ -27,30 +28,24 @@ class DayControllerTest extends TestCase
 
     protected function setUp()
     {
-        $factory = new SpecialDayRepositoryFactory(
-            new MockDayTypeRepository(),
-            [
-                ['2018-03-15', MockDayTypeRepository::NON_WORKING_DAY, ''],
-                ['2019-03-15', MockDayTypeRepository::NON_WORKING_DAY, '']
-            ]
-        );
+        $factory = new HuSpecialDayRepositoryFactory(new HuDayTypeRepository());
         $this->repo = $factory->createRepository();
-        $this->calendar = new CalendarImp(new MockDayTypeRepository(), $this->repo);
+        $this->calendar = new CalendarImp(new HuDayTypeRepository(), $this->repo);
     }
 
     public function testGetADay()
     {
         $controller = new GetADayController($this->calendar);
-        $this->assertEquals(MockDayTypeRepository::NON_WORKING_DAY, $controller('2018-03-15')->getType()->getKey());
-        $this->assertEquals(MockDayTypeRepository::WORKING_DAY, $controller('2018-03-14')->getType()->getKey());
+        $this->assertEquals(MockDayTypeRepository::NON_WORKING_DAY, $controller('2018-01-01')->getType()->getKey());
+        $this->assertEquals(MockDayTypeRepository::WORKING_DAY, $controller('2018-01-02')->getType()->getKey());
     }
 
     public function testGetInterval()
     {
         $controller = new GetDayIntervalController($this->calendar);
         $request = new FromArrayRequest([
-            'from' => '2018-03-14',
-            'to' => '2018-03-16',
+            'from' => '2017-12-31',
+            'to' => '2018-01-02',
         ]);
         $response =  $controller($request);
         $this->assertCount(3, $response);

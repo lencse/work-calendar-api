@@ -2,9 +2,10 @@
 
 namespace Lencse\WorkCalendar\Calendar\Repository;
 
+use DateTimeImmutable;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 
-class SpecialDayRepositoryFactory
+abstract class SpecialDayRepositoryFactory
 {
 
     /**
@@ -12,27 +13,26 @@ class SpecialDayRepositoryFactory
      */
     private $dayTypeRepo;
 
-    /**
-     * @var array
-     */
-    private $buildFromArray;
-
-    public function __construct(DayTypeRepository $dayTypeRepo, array $buildFromArray)
+    public function __construct(DayTypeRepository $dayTypeRepo)
     {
         $this->dayTypeRepo = $dayTypeRepo;
-        $this->buildFromArray = $buildFromArray;
     }
 
     public function createRepository(): DayRepository
     {
-        $repo = new SpecialDayRepository();
-        foreach ($this->buildFromArray as $config) {
-            $date = \DateTimeImmutable::createFromFormat('Y-m-d', $config[0]);
+        $days = [];
+        foreach ($this->getConfig() as $config) {
+            $date = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $config[0] . ' 00:00:00');
             $type = $this->dayTypeRepo->get($config[1]);
             $description = $config[2];
-            $repo->add(new Day($date, $type, $description));
+            $days[] = new Day($date, $type, $description);
         }
 
-        return $repo;
+        return new InMemoryDayRepository($days);
     }
+
+    /**
+     * @return string[]
+     */
+    abstract protected function getConfig(): array;
 }
