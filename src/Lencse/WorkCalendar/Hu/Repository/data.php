@@ -103,8 +103,8 @@ $config = [
 $result = [];
 
 foreach ($config as $year => $yearData) {
-    foreach ($yearData as $data) {
-        $result[] = [implode('-', [$year, $data[0]]), $data[1], $data[2]];
+    foreach ($yearData as $day) {
+        $result[] = [implode('-', [$year, $day[0]]), $day[1], $day[2]];
     }
 }
 
