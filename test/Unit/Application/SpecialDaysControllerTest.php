@@ -44,7 +44,7 @@ class SpecialDaysControllerTest extends TestCase
     public function testGetForEmptyYear(): void
     {
         $controller = new GetSpecialDaysForYearController($this->repo);
-        $response = $controller(2017);
+        $response = $controller(2000);
 
         $this->assertEquals([], $response);
     }

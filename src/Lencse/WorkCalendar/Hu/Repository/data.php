@@ -1,0 +1,111 @@
+<?php
+
+use \Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository as Hu;
+
+$config = [
+    '2014' => [
+        ['01-01', Hu::NON_WORKING_DAY, 'Újév'],
+        ['03-15', Hu::NON_WORKING_DAY, 'Az 1848-as forradalom ünnepe'],
+        ['04-21', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['05-01', Hu::NON_WORKING_DAY, 'A munka ünnepe'],
+        ['05-02', Hu::SWITCHED_REST_DAY, ''],
+        ['05-10', Hu::SWITCHED_WORKING_DAY, ''],
+        ['06-09', Hu::NON_WORKING_DAY, 'Pünkösd'],
+        ['08-20', Hu::NON_WORKING_DAY, 'Az államalapítás ünnepe'],
+        ['10-18', Hu::SWITCHED_WORKING_DAY, ''],
+        ['10-23', Hu::NON_WORKING_DAY, 'Az 1956-os forradalom ünnepe'],
+        ['10-24', Hu::SWITCHED_REST_DAY, ''],
+        ['11-01', Hu::NON_WORKING_DAY, 'Mindenszentek'],
+        ['12-13', Hu::SWITCHED_WORKING_DAY, ''],
+        ['12-24', Hu::SWITCHED_REST_DAY, ''],
+        ['12-25', Hu::NON_WORKING_DAY, 'Karácsony'],
+        ['12-26', Hu::NON_WORKING_DAY, 'Karácsony'],
+    ],
+    '2015' => [
+        ['01-01', Hu::NON_WORKING_DAY, 'Újév'],
+        ['01-02', Hu::SWITCHED_REST_DAY, ''],
+        ['01-10', Hu::SWITCHED_WORKING_DAY, ''],
+        ['03-15', Hu::NON_WORKING_DAY, 'Az 1848-as forradalom ünnepe'],
+        ['04-05', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['04-06', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['05-01', Hu::NON_WORKING_DAY, 'A munka ünnepe'],
+        ['05-24', Hu::NON_WORKING_DAY, 'Pünkösd'],
+        ['05-25', Hu::NON_WORKING_DAY, 'Pünkösd'],
+        ['08-08', Hu::SWITCHED_WORKING_DAY, ''],
+        ['08-20', Hu::NON_WORKING_DAY, 'Az államalapítás ünnepe'],
+        ['08-21', Hu::SWITCHED_REST_DAY, ''],
+        ['10-23', Hu::NON_WORKING_DAY, 'Az 1956-os forradalom ünnepe'],
+        ['11-01', Hu::NON_WORKING_DAY, 'Mindenszentek'],
+        ['12-12', Hu::SWITCHED_WORKING_DAY, ''],
+        ['12-24', Hu::SWITCHED_REST_DAY, ''],
+        ['12-25', Hu::NON_WORKING_DAY, 'Karácsony'],
+        ['12-26', Hu::NON_WORKING_DAY, 'Karácsony'],
+    ],
+    '2016' => [
+        ['01-01', Hu::NON_WORKING_DAY, 'Újév'],
+        ['03-05', Hu::SWITCHED_WORKING_DAY, ''],
+        ['03-14', Hu::SWITCHED_REST_DAY, ''],
+        ['03-15', Hu::NON_WORKING_DAY, 'Az 1848-as forradalom ünnepe'],
+        ['03-27', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['03-28', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['05-01', Hu::NON_WORKING_DAY, 'A munka ünnepe'],
+        ['05-16', Hu::NON_WORKING_DAY, 'Pünkösd'],
+        ['08-20', Hu::NON_WORKING_DAY, 'Az államalapítás ünnepe'],
+        ['10-15', Hu::SWITCHED_WORKING_DAY, ''],
+        ['10-23', Hu::NON_WORKING_DAY, 'Az 1956-os forradalom ünnepe'],
+        ['10-31', Hu::SWITCHED_REST_DAY, ''],
+        ['11-01', Hu::NON_WORKING_DAY, 'Mindenszentek'],
+        ['12-25', Hu::NON_WORKING_DAY, 'Karácsony'],
+        ['12-26', Hu::NON_WORKING_DAY, 'Karácsony'],
+    ],
+    '2017' => [
+        ['01-01', Hu::NON_WORKING_DAY, 'Újév'],
+        ['03-15', Hu::NON_WORKING_DAY, 'Az 1848-as forradalom ünnepe'],
+        ['04-14', Hu::NON_WORKING_DAY, 'Nagypéntek'],
+        ['04-16', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['04-17', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['05-01', Hu::NON_WORKING_DAY, 'A munka ünnepe'],
+        ['06-04', Hu::NON_WORKING_DAY, 'Pünkösd'],
+        ['06-05', Hu::NON_WORKING_DAY, 'Pünkösd'],
+        ['08-20', Hu::NON_WORKING_DAY, 'Az államalapítás ünnepe'],
+        ['10-23', Hu::NON_WORKING_DAY, 'Az 1956-os forradalom ünnepe'],
+        ['11-01', Hu::NON_WORKING_DAY, 'Mindenszentek'],
+        ['12-25', Hu::NON_WORKING_DAY, 'Karácsony'],
+        ['12-26', Hu::NON_WORKING_DAY, 'Karácsony'],
+    ],
+    '2018' => [
+        ['01-01', Hu::NON_WORKING_DAY, 'Újév'],
+        ['03-10', Hu::SWITCHED_WORKING_DAY, ''],
+        ['03-15', Hu::NON_WORKING_DAY, 'Az 1848-as forradalom ünnepe'],
+        ['03-16', Hu::SWITCHED_REST_DAY, ''],
+        ['03-30', Hu::NON_WORKING_DAY, 'Nagypéntek'],
+        ['04-01', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['04-02', Hu::NON_WORKING_DAY, 'Húsvét'],
+        ['04-21', Hu::SWITCHED_WORKING_DAY, ''],
+        ['05-01', Hu::NON_WORKING_DAY, 'A munka ünnepe'],
+        ['05-20', Hu::NON_WORKING_DAY, 'Pünkösd'],
+        ['05-21', Hu::NON_WORKING_DAY, 'Pünkösd'],
+        ['08-20', Hu::NON_WORKING_DAY, 'Az államalapítás ünnepe'],
+        ['10-13', Hu::SWITCHED_WORKING_DAY, ''],
+        ['10-22', Hu::SWITCHED_REST_DAY, ''],
+        ['10-23', Hu::NON_WORKING_DAY, 'Az 1956-os forradalom ünnepe'],
+        ['11-01', Hu::NON_WORKING_DAY, 'Mindenszentek'],
+        ['11-02', Hu::SWITCHED_REST_DAY, ''],
+        ['12-01', Hu::SWITCHED_WORKING_DAY, ''],
+        ['12-15', Hu::SWITCHED_WORKING_DAY, ''],
+        ['12-24', Hu::SWITCHED_REST_DAY, ''],
+        ['12-25', Hu::NON_WORKING_DAY, 'Karácsony'],
+        ['12-26', Hu::NON_WORKING_DAY, 'Karácsony'],
+        ['12-31', Hu::SWITCHED_REST_DAY, ''],
+    ],
+];
+
+$result = [];
+
+foreach ($config as $year => $yearData) {
+    foreach ($yearData as $data) {
+        $result[] = [implode('-', [$year, $data[0]]), $data[1], $data[2]];
+    }
+}
+
+return $result;
