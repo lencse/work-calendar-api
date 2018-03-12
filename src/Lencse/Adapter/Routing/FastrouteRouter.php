@@ -5,6 +5,7 @@ namespace Lencse\Adapter\Routing;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
+use Lencse\Application\Exception\BadMethodException;
 use Lencse\Application\Exception\NotFoundException;
 use Lencse\Application\Routing\Route;
 use Lencse\Application\Routing\Router;
@@ -36,6 +37,10 @@ class FastrouteRouter implements Router
 
         if (Dispatcher::FOUND === $routeInfo[0]) {
             return new RoutingResponse((string) $routeInfo[1], (array) $routeInfo[2]);
+        }
+
+        if (Dispatcher::METHOD_NOT_ALLOWED === $routeInfo[0]) {
+            throw new BadMethodException();
         }
 
         throw new NotFoundException();

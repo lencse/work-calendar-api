@@ -4,6 +4,7 @@ namespace Test\Unit\Adapter;
 
 use GuzzleHttp\Psr7\ServerRequest;
 use Lencse\Adapter\Routing\FastrouteRouter;
+use Lencse\Application\Exception\BadMethodException;
 use Lencse\Application\Exception\NotFoundException;
 use Lencse\Application\Routing\Route;
 use PHPUnit\Framework\TestCase;
@@ -51,6 +52,20 @@ class FastrouteRouterTest extends TestCase
         );
 
         $this->expectException(NotFoundException::class);
+        $router->route($request);
+    }
+
+    public function testBadMethod()
+    {
+        $router = new FastrouteRouter();
+        $router->add(new Route('/test/{id}', 'TestHandler'));
+
+        $request = new ServerRequest(
+            'POST',
+            '/test/1'
+        );
+
+        $this->expectException(BadMethodException::class);
         $router->route($request);
     }
 }
