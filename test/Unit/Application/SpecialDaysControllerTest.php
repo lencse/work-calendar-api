@@ -28,7 +28,7 @@ class SpecialDaysControllerTest extends TestCase
     public function testGetAllDays(): void
     {
         $controller = new GetAllSpecialDaysController($this->repo);
-        $response = $controller(new FromArrayRequest([]));
+        $response = $controller();
 
         $this->assertEquals($this->repo->getAll(), $response);
     }

@@ -14,6 +14,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $injector = new Injector();
 
+Request::
+
 $injector->alias(DayTypeRepository::class, HuDayTypeRepository::class);
 
 $repo = $injector->make(DayTypeRepository::class);

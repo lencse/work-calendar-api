@@ -7,6 +7,7 @@ use Lencse\Application\Exception\BadRequestException;
 use Lencse\Application\Http\Request;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Repository\Calendar;
+use Psr\Http\Message\ServerRequestInterface;
 
 class GetDayIntervalController
 {
@@ -22,16 +23,18 @@ class GetDayIntervalController
     }
 
     /**
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @return Day[]
+     * @throws BadRequestException
      */
-    public function __invoke(Request $request): array
+    public function __invoke(ServerRequestInterface $request): array
     {
-        if (!$request->hasParam('to') || !$request->hasParam('from')) {
+        $params = $request->getQueryParams();
+        if (!isset($params['from']) || !isset($params['to'])) {
             throw new BadRequestException();
         }
-        $from = DateTimeImmutable::createFromFormat('Y-m-d', (string) $request->getParam('from'));
-        $to = DateTimeImmutable::createFromFormat('Y-m-d', (string) $request->getParam('to'));
+        $from = DateTimeImmutable::createFromFormat('Y-m-d', (string) $params['from']);
+        $to = DateTimeImmutable::createFromFormat('Y-m-d', (string) $params['to']);
         return $this->calendar->getInterval($from, $to);
     }
 }
