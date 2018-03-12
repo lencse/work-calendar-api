@@ -46,9 +46,7 @@ class InMemoryDayRepository implements DayRepository
         foreach ($this->days as $day) {
             $result[] = $day;
         }
-        usort($result, function (Day $day1, Day $day2): int {
-            return $day1->getDate()->getTimestamp() - $day2->getDate()->getTimestamp();
-        });
+        usort($result, [$this, 'compareDays']);
 
         return $result;
     }
@@ -65,9 +63,7 @@ class InMemoryDayRepository implements DayRepository
                 $result[] = $day;
             }
         }
-        usort($result, function (Day $day1, Day $day2): int {
-            return $day1->getDate()->getTimestamp() - $day2->getDate()->getTimestamp();
-        });
+        usort($result, [$this, 'compareDays']);
 
         return $result;
     }
@@ -90,5 +86,17 @@ class InMemoryDayRepository implements DayRepository
                 $this->format($date)
             ));
         }
+    }
+
+    /**
+     * @param Day $day1
+     * @param Day $day2
+     * @return int
+     *
+     * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
+     */
+    private function compareDays(Day $day1, Day $day2): int
+    {
+        return $day1->getDate()->getTimestamp() - $day2->getDate()->getTimestamp();
     }
 }
