@@ -24,7 +24,6 @@ class InMemoryDayRepository implements DayRepository
         }
     }
 
-
     public function has(DateTimeInterface $date): bool
     {
         return isset($this->days[$this->format($date)]);

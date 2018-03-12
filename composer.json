@@ -14,8 +14,8 @@
     "require": {
         "php": ">=7.1.0",
         "rdlowrey/auryn": "^1.4",
-        "nikic/fast-route": "^1.3",
-        "guzzlehttp/psr7": "^1.4"
+        "guzzlehttp/psr7": "^1.4",
+        "nikic/fast-route": "^1.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.5",
@@ -30,7 +30,8 @@
             "Lencse\\WorkCalendar\\Calendar\\": "src/Lencse/WorkCalendar/Calendar/",
             "Lencse\\WorkCalendar\\Hu\\": "src/Lencse/WorkCalendar/Hu/",
             "Lencse\\Date\\": "src/Lencse/Date/",
-            "Lencse\\Application\\": "src/Lencse/Application/"
+            "Lencse\\Application\\": "src/Lencse/Application/",
+            "Lencse\\Adapter\\": "src/Lencse/Adapter/"
         }
     },
     "autoload-dev": {
