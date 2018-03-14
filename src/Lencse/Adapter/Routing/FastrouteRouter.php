@@ -35,14 +35,14 @@ class FastrouteRouter implements Router
 
         $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getUri()->getPath());
 
-        if (Dispatcher::FOUND === $routeInfo[0]) {
-            return new RoutingResponse((string) $routeInfo[1], (array) $routeInfo[2]);
-        }
-
         if (Dispatcher::METHOD_NOT_ALLOWED === $routeInfo[0]) {
             throw new BadMethodException();
         }
 
-        throw new NotFoundException();
+        if (Dispatcher::FOUND !== $routeInfo[0]) {
+            throw new NotFoundException();
+        }
+
+        return new RoutingResponse((string) $routeInfo[1], (array) $routeInfo[2]);
     }
 }
