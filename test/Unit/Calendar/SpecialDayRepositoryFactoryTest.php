@@ -14,7 +14,7 @@ class SpecialDayRepositoryFactoryTest extends TestCase
     public function testFactory(): void
     {
         $factory = new MockDayRepositoryFactory(new MockDayTypeRepository());
-        $repo = $factory->createRepository();
+        $repo = $factory();
 
         $this->assertEquals('Description', $repo->get(DateHelper::dateTime('2018-03-15'))->getDescription());
     }
@@ -23,7 +23,7 @@ class SpecialDayRepositoryFactoryTest extends TestCase
     public function testArgument(): void
     {
         $factory = new MockDayRepositoryFactory(new MockDayTypeRepository());
-        $repo = $factory->createRepository();
+        $repo = $factory();
         $this->expectException(NoSpecialDayException::class);
         $repo->get(DateHelper::dateTime('2018-03-18'));
     }

@@ -22,7 +22,7 @@ class SpecialDaysControllerTest extends TestCase
     protected function setUp(): void
     {
         $factory = new HuSpecialDayRepositoryFactory(new HuDayTypeRepository());
-        $this->repo = $factory->createRepository();
+        $this->repo = $factory();
     }
 
     public function testGetAllDays(): void

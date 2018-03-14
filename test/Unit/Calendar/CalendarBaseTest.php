@@ -36,7 +36,7 @@ abstract class CalendarBaseTest extends TestCase
     {
         $this->dayTypeRepo = new MockDayTypeRepository();
         $factory = new MockDayRepositoryFactory($this->dayTypeRepo);
-        $this->dayRepo = $factory->createRepository();
+        $this->dayRepo = $factory();
         $this->calendar = new CalendarImp($this->dayTypeRepo, $this->dayRepo);
     }
 }

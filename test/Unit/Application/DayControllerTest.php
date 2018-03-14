@@ -31,7 +31,7 @@ class DayControllerTest extends TestCase
     protected function setUp()
     {
         $factory = new HuSpecialDayRepositoryFactory(new HuDayTypeRepository());
-        $this->repo = $factory->createRepository();
+        $this->repo = $factory();
         $this->calendar = new CalendarImp(new HuDayTypeRepository(), $this->repo);
     }
 

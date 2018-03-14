@@ -18,7 +18,7 @@ abstract class SpecialDayRepositoryFactory
         $this->dayTypeRepo = $dayTypeRepo;
     }
 
-    public function createRepository(): DayRepository
+    public function __invoke(): DayRepository
     {
         $days = [];
         foreach ($this->getConfig() as $config) {
