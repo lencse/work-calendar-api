@@ -2,8 +2,10 @@
 
 namespace Lencse\Adapter\Http\JsonApi;
 
+use Lencse\Adapter\Http\JsonApi\Schema\DaySchema;
 use Lencse\Adapter\Http\JsonApi\Schema\DayTypeSchema;
 use Lencse\Application\Http\JsonApi\JsonApi;
+use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
 use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
 use Neomerx\JsonApi\Encoder\Encoder;
@@ -20,7 +22,8 @@ class NeomerxJsonApi implements JsonApi
     public function __construct()
     {
         $mapping = [
-            DayType::class => DayTypeSchema::class
+            DayType::class => DayTypeSchema::class,
+            Day::class => DaySchema::class,
         ];
         $this->jsonApi = Encoder::instance($mapping, new EncoderOptions(0, '/api/v1'));
     }
