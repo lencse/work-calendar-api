@@ -14,7 +14,7 @@ interface Dic
      * @param mixed[] $params
      * @return mixed
      */
-    public function call(string $callableClass, array $params);
+    public function call(string $callableClass, array $params = []);
 
     public function factory(string $class, string $factoryClass): void;
 }
