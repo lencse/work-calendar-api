@@ -1,0 +1,48 @@
+<?php return array (
+  0 => 
+  array (
+    'GET' => 
+    array (
+      '/api/v1/day-types' => 'Lencse\\Application\\Controller\\GetAllTypesController',
+      '/api/v1/days/special' => 'Lencse\\Application\\Controller\\GetAllSpecialDaysController',
+      '/api/v1/days' => 'Lencse\\Application\\Controller\\GetDayIntervalController',
+    ),
+  ),
+  1 => 
+  array (
+    'GET' => 
+    array (
+      0 => 
+      array (
+        'regex' => '~^(?|/api/v1/day\\-types/([^/]+)|/api/v1/days/special/([^/]+)()|/api/v1/days/([^/]+)()())$~',
+        'routeMap' => 
+        array (
+          2 => 
+          array (
+            0 => 'Lencse\\Application\\Controller\\GetTypeController',
+            1 => 
+            array (
+              'key' => 'key',
+            ),
+          ),
+          3 => 
+          array (
+            0 => 'Lencse\\Application\\Controller\\GetSpecialDaysForYearController',
+            1 => 
+            array (
+              'year' => 'year',
+            ),
+          ),
+          4 => 
+          array (
+            0 => 'Lencse\\Application\\Controller\\GetADayController',
+            1 => 
+            array (
+              'day' => 'day',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+);

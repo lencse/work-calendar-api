@@ -2,6 +2,7 @@
 
 namespace Lencse\Adapter\Routing;
 
+use function FastRoute\cachedDispatcher;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
@@ -27,11 +28,13 @@ class FastrouteRouter implements Router
 
     public function route(ServerRequestInterface $request): RoutingResult
     {
-        $dispatcher = simpleDispatcher(function (RouteCollector $collector): void {
+        $dispatcher = cachedDispatcher(function (RouteCollector $collector): void {
             foreach ($this->routes as $route) {
                 $collector->addRoute('GET', $route->getPath(), $route->getHandlerClass());
             }
-        });
+        }, [
+            'cacheFile' => __DIR__ . '/.route-cache'
+        ]);
 
         $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getUri()->getPath());
 
