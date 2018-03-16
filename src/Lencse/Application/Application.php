@@ -5,6 +5,7 @@ namespace Lencse\Application;
 use Lencse\Application\DependencyInjection\Caller;
 use Lencse\Application\Http\JsonApi\JsonApi;
 use Lencse\Application\Http\Messaging\ResponseTransformer;
+use Lencse\Application\Routing\RouteCaller;
 use Lencse\Application\Routing\Router;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,14 +14,9 @@ class Application
 {
 
     /**
-     * @var Caller
+     * @var RouteCaller
      */
-    private $caller;
-
-    /**
-     * @var Router
-     */
-    private $router;
+    private $routeCaller;
 
     /**
      * @var JsonApi
@@ -33,21 +29,18 @@ class Application
     private $responseTransformer;
 
     public function __construct(
-        Caller $caller,
-        Router $router,
+        RouteCaller $routeCaller,
         JsonApi $jsonApi,
         ResponseTransformer $responseTransformer
     ) {
-        $this->caller = $caller;
-        $this->router = $router;
+        $this->routeCaller = $routeCaller;
         $this->jsonApi = $jsonApi;
         $this->responseTransformer = $responseTransformer;
     }
 
     public function run(ServerRequestInterface $request): ResponseInterface
     {
-        $route = $this->router->route($request);
-        $result = $this->caller->call($route->getHandlerClass(), $route->getParams());
+        $result = $this->routeCaller->call($request);
         $body = $this->jsonApi->transform($result);
 
         return $this->responseTransformer->createResponse($body);

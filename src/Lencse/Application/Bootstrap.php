@@ -32,12 +32,7 @@ class Bootstrap
 
     public function createApplication(): Application
     {
-        return new Application(
-            $this->dic->make(Caller::class),
-            $this->router,
-            $this->dic->make(JsonApi::class),
-            $this->dic->make(ResponseTransformer::class)
-        );
+        return $this->dic->make(Application::class);
     }
 
     private function createDic(string $dicClass): void
@@ -50,6 +45,7 @@ class Bootstrap
         $this->bind($config['bind']);
         $this->injectSelf($config['inject-self']);
         $this->factory($config['factory']);
+        $this->share($config['share']);
     }
 
     private function bind(array $config): void
@@ -70,6 +66,13 @@ class Bootstrap
     {
         foreach ($config as $abstract) {
             $this->dic->shareInstance($abstract, $this->dic);
+        }
+    }
+
+    private function share(array $config): void
+    {
+        foreach ($config as $class) {
+            $this->dic->share($class);
         }
     }
 

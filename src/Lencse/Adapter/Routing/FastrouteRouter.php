@@ -9,7 +9,7 @@ use Lencse\Application\Exception\BadMethodException;
 use Lencse\Application\Exception\NotFoundException;
 use Lencse\Application\Routing\Route;
 use Lencse\Application\Routing\Router;
-use Lencse\Application\Routing\RoutingResponse;
+use Lencse\Application\Routing\RoutingResult;
 use Psr\Http\Message\ServerRequestInterface;
 
 class FastrouteRouter implements Router
@@ -25,7 +25,7 @@ class FastrouteRouter implements Router
         $this->routes[] = $route;
     }
 
-    public function route(ServerRequestInterface $request): RoutingResponse
+    public function route(ServerRequestInterface $request): RoutingResult
     {
         $dispatcher = simpleDispatcher(function (RouteCollector $collector): void {
             foreach ($this->routes as $route) {
@@ -56,6 +56,6 @@ class FastrouteRouter implements Router
             }
         }
 
-        return new RoutingResponse($handler, $routeParams);
+        return new RoutingResult($handler, $routeParams);
     }
 }

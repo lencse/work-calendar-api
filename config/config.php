@@ -39,6 +39,9 @@ return [
         'factory' => [
             DayRepository::class => HuSpecialDayRepositoryFactory::class,
         ],
+        'share' => [
+            Router::class,
+        ],
     ],
     'routes' => [
         '/api/v1/day-types' => GetAllTypesController::class,

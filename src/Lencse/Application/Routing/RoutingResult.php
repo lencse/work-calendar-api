@@ -2,7 +2,7 @@
 
 namespace Lencse\Application\Routing;
 
-class RoutingResponse
+class RoutingResult
 {
 
     /**

@@ -4,7 +4,6 @@ namespace Lencse\Application\Controller;
 
 use DateTimeImmutable;
 use Lencse\Application\Exception\BadRequestException;
-use Lencse\Application\Http\Request;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Repository\Calendar;
 use Psr\Http\Message\ServerRequestInterface;

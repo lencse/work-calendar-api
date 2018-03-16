@@ -9,5 +9,5 @@ interface Router
 
     public function add(Route $route): void;
 
-    public function route(ServerRequestInterface $request): RoutingResponse;
+    public function route(ServerRequestInterface $request): RoutingResult;
 }
