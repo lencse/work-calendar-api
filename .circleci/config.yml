@@ -20,16 +20,29 @@ jobs:
             - run:
                 name: Test
                 command: composer test-all
-deployment:
-    staging:
-        branch: master
-        heroku:
-            appname: work-calendar-api-staging
-#workflows:
-#    version: 2
-#    standard:
-#        jobs:
-#            - build
-#            - deploy-to-staging:
-#                requires:
-#                    - build
+    deploy-to-staging:
+        docker:
+            - image: circleci/php:7.2-browsers
+        working_directory: ~/repo
+        steps:
+            - checkout
+            - add_ssh_keys:  # add key from CircleCI account based on fingerprint
+                fingerprints:
+                     - "f2:40:52:df:7e:e6:b3:4d:18:55:4f:29:04:0b:59:6c"
+            - run:
+                name: Heroku Init
+                command:
+                    bash .circleci/setup-heroku.sh
+            - run:
+                name: Deploy to Heroku Staging Server
+                command: |
+                    heroku git:remote -a HEROKU_APP_NAME_STAGING
+                    git push --force git@heroku.com:$HEROKU_APP_NAME.git HEAD:refs/heads/master
+workflows:
+    version: 2
+    standard:
+        jobs:
+            - build
+            - deploy-to-staging:
+                requires:
+                    - build
