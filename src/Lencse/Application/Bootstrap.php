@@ -9,6 +9,9 @@ use Lencse\Application\Http\Messaging\ResponseTransformer;
 use Lencse\Application\Routing\Route;
 use Lencse\Application\Routing\Router;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class Bootstrap
 {
 
@@ -22,9 +25,15 @@ class Bootstrap
      */
     private $router;
 
+    /**
+     * @param array $config
+     *
+     * @psalm-suppress MixedArrayAccess
+     * @psalm-suppress MixedArgument
+     */
     public function __construct(array $config)
     {
-        $this->createDic($config['dic']['class']);
+        $this->createDic((string) $config['dic']['class']);
         $this->setupDic($config['dic']);
         $this->createRouter();
         $this->setupRouter($config['routes']);
@@ -32,14 +41,23 @@ class Bootstrap
 
     public function createApplication(): Application
     {
-        return $this->dic->make(Application::class);
+        /** @var Application $app */
+        $app = $this->dic->make(Application::class);
+        return $app;
     }
 
     private function createDic(string $dicClass): void
     {
-        $this->dic = new $dicClass();
+        /** @var Dic $dic */
+        $dic = new $dicClass();
+        $this->dic = $dic;
     }
 
+    /**
+     * @param array $config
+     *
+     * @psalm-suppress MixedArgument
+     */
     private function setupDic(array $config): void
     {
         $this->bind($config['bind']);
@@ -48,20 +66,29 @@ class Bootstrap
         $this->share($config['share']);
     }
 
+    /**
+     * @param string[] $config
+     */
     private function bind(array $config): void
     {
         foreach ($config as $abstract => $concrete) {
-            $this->dic->bind($abstract, $concrete);
+            $this->dic->bind((string) $abstract, $concrete);
         }
     }
 
+    /**
+     * @param string[] $config
+     */
     private function factory(array $config): void
     {
         foreach ($config as $abstract => $factory) {
-            $this->dic->factory($abstract, $factory);
+            $this->dic->factory((string) $abstract, $factory);
         }
     }
 
+    /**
+     * @param string[] $config
+     */
     private function injectSelf(array $config): void
     {
         foreach ($config as $abstract) {
@@ -69,6 +96,9 @@ class Bootstrap
         }
     }
 
+    /**
+     * @param string[] $config
+     */
     private function share(array $config): void
     {
         foreach ($config as $class) {
@@ -78,13 +108,18 @@ class Bootstrap
 
     private function createRouter(): void
     {
-        $this->router = $this->dic->make(Router::class);
+        /** @var Router $router */
+        $router = $this->dic->make(Router::class);
+        $this->router = $router;
     }
 
+    /**
+     * @param string[] $config
+     */
     private function setupRouter(array $config): void
     {
         foreach ($config as $path => $handler) {
-            $this->router->add(new Route($path, $handler));
+            $this->router->add(new Route((string) $path, $handler));
         }
     }
 }

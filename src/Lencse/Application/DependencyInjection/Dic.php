@@ -13,5 +13,5 @@ interface Dic
 
     public function share(string $class): void;
 
-    public function shareInstance(string $class, $instance): void;
+    public function shareInstance(string $class, object $instance): void;
 }

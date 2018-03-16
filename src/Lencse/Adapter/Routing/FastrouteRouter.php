@@ -48,6 +48,7 @@ class FastrouteRouter implements Router
 
         if (class_exists($handler)) {
             $reflection = new \ReflectionClass($handler);
+            /** @var \ReflectionParameter[] $params */
             $params = $reflection->getMethod('__invoke')->getParameters();
             foreach ($params as $param) {
                 if (ServerRequestInterface::class === $param->getType()->getName()) {

@@ -35,9 +35,11 @@ class AurynDic implements Dic, Caller
     /**
      * @param string $callableClass
      * @param mixed[] $params
-     * @return mixed
+     * @return object|array
      *
      * @psalm-suppress MixedAssignment
+     * @psalm-suppress MixedInferredReturnType
+     * @psalm-suppress MixedReturnStatement
      */
     public function call(string $callableClass, array $params = [])
     {
@@ -59,7 +61,7 @@ class AurynDic implements Dic, Caller
         $this->auryn->share($this->make($class));
     }
 
-    public function shareInstance(string $class, $instance): void
+    public function shareInstance(string $class, object $instance): void
     {
         $this->auryn->share($instance);
         $this->bind($class, get_class($instance));
