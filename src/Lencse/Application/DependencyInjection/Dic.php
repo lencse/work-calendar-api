@@ -11,5 +11,7 @@ interface Dic
 
     public function factory(string $class, string $factoryClass): void;
 
-    public function share(string $class, $instance): void;
+    public function share(string $class): void;
+
+    public function shareInstance(string $class, $instance): void;
 }

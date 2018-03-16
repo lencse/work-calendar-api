@@ -2,6 +2,7 @@
 
 namespace Test\Unit\Adapter;
 
+use DateTime;
 use DateTimeInterface;
 use Lencse\Adapter\DependencyInjection\AurynDic;
 use Lencse\Application\Controller\GetAllTypesController;
@@ -60,11 +61,22 @@ class AurynDicTest extends TestCase
         $this->assertTrue($result instanceof DayRepository);
     }
 
+    public function testShareInstance()
+    {
+        $dic = new AurynDic();
+        $dic->shareInstance(DateTimeInterface::class, DateHelper::dateTime('2018-03-15'));
+        $result = $dic->make(DateTimeInterface::class);
+        $this->assertEquals('2018-03-15', $result->format('Y-m-d'));
+    }
+
     public function testShare()
     {
         $dic = new AurynDic();
-        $dic->share(DateTimeInterface::class, DateHelper::dateTime('2018-03-15'));
-        $result = $dic->make(DateTimeInterface::class);
-        $this->assertEquals('2018', $result->format('Y'));
+        $dic->share(DateTime::class);
+        /** @var DateTime $date */
+        $date = $dic->make(DateTime::class);
+        $date->setDate(2018, 1, 1);
+        $result = $dic->make(DateTime::class);
+        $this->assertEquals('2018-01-01', $result->format('Y-m-d'));
     }
 }

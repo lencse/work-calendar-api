@@ -54,7 +54,12 @@ class AurynDic implements Dic, Caller
         $this->auryn->delegate($class, $factoryClass);
     }
 
-    public function share(string $class, $instance): void
+    public function share(string $class): void
+    {
+        $this->auryn->share($this->make($class));
+    }
+
+    public function shareInstance(string $class, $instance): void
     {
         $this->auryn->share($instance);
         $this->bind($class, get_class($instance));

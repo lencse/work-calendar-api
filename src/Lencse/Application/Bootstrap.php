@@ -69,7 +69,7 @@ class Bootstrap
     private function injectSelf(array $config): void
     {
         foreach ($config as $abstract) {
-            $this->dic->share($abstract, $this->dic);
+            $this->dic->shareInstance($abstract, $this->dic);
         }
     }
 
