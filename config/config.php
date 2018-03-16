@@ -16,8 +16,6 @@ use Lencse\Application\DependencyInjection\Caller;
 use Lencse\Application\Http\JsonApi\JsonApi;
 use Lencse\Application\Http\Messaging\ResponseTransformer;
 use Lencse\Application\Routing\Router;
-use Lencse\WorkCalendar\Calendar\Repository\Calendar;
-use Lencse\WorkCalendar\Calendar\Repository\CalendarImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
@@ -31,7 +29,6 @@ return [
         ],
         'bind' => [
             DayTypeRepository::class => HuDayTypeRepository::class,
-            Calendar::class => CalendarImp::class,
             JsonApi::class => NeomerxJsonApi::class,
             ResponseTransformer::class => GuzzleHttpResponseTransformer::class,
             Router::class => FastrouteRouter::class,

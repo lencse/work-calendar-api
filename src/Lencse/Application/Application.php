@@ -28,11 +28,8 @@ class Application
      */
     private $responseTransformer;
 
-    public function __construct(
-        RouteCaller $routeCaller,
-        JsonApi $jsonApi,
-        ResponseTransformer $responseTransformer
-    ) {
+    public function __construct(RouteCaller $routeCaller, JsonApi $jsonApi, ResponseTransformer $responseTransformer)
+    {
         $this->routeCaller = $routeCaller;
         $this->jsonApi = $jsonApi;
         $this->responseTransformer = $responseTransformer;

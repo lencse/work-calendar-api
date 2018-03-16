@@ -4,7 +4,6 @@ namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
 use Lencse\WorkCalendar\Calendar\Repository\Calendar;
-use Lencse\WorkCalendar\Calendar\Repository\CalendarImp;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
@@ -37,6 +36,6 @@ abstract class CalendarBaseTest extends TestCase
         $this->dayTypeRepo = new MockDayTypeRepository();
         $factory = new MockDayRepositoryFactory($this->dayTypeRepo);
         $this->dayRepo = $factory();
-        $this->calendar = new CalendarImp($this->dayTypeRepo, $this->dayRepo);
+        $this->calendar = new Calendar($this->dayTypeRepo, $this->dayRepo);
     }
 }

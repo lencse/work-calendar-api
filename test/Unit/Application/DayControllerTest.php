@@ -7,7 +7,6 @@ use Lencse\Application\Controller\GetADayController;
 use Lencse\Application\Controller\GetDayIntervalController;
 use Lencse\Application\Exception\BadRequestException;
 use Lencse\WorkCalendar\Calendar\Repository\Calendar;
-use Lencse\WorkCalendar\Calendar\Repository\CalendarImp;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
@@ -32,7 +31,7 @@ class DayControllerTest extends TestCase
     {
         $factory = new HuSpecialDayRepositoryFactory(new HuDayTypeRepository());
         $this->repo = $factory();
-        $this->calendar = new CalendarImp(new HuDayTypeRepository(), $this->repo);
+        $this->calendar = new Calendar(new HuDayTypeRepository(), $this->repo);
     }
 
     public function testGetADay(): void
