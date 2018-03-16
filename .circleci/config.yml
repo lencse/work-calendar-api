@@ -20,27 +20,11 @@ jobs:
             - run:
                 name: Test
                 command: composer test-all
-    deploy-to-staging:
-        docker:
-            - image: google/cloud-sdk:latest
-        working_directory: ~/repo
-        steps:
-            - checkout
-            - run:
-                name: Authorize with Google Cloud
-                command: |
-                    echo $GCLOUD_STAGING_AUTH_SECRET | base64 --decode > gcloud-auth-secret.json
-                    gcloud auth activate-service-account --key-file gcloud-auth-secret.json
-                    gcloud config set project $GCLOUD_STAGING_PROJECT
-            - run:
-                name: Print Google Cloud settings
-                command: |
-                    gcloud auth list
-                    gcloud config list
-            - run:
-                name: Deploy to App Engine
-                command:
-                    gcloud -q app deploy app.yml
+deployment:
+    staging:
+        branch: master
+        heroku:
+            appname: work-calendar-api-staging
 workflows:
     version: 2
     standard:
