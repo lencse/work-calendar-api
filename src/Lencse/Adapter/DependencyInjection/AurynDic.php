@@ -3,10 +3,10 @@
 namespace Lencse\Adapter\DependencyInjection;
 
 use Auryn\Injector;
-use Closure;
+use Lencse\Application\DependencyInjection\Caller;
 use Lencse\Application\DependencyInjection\Dic;
 
-class AurynDic implements Dic
+class AurynDic implements Dic, Caller
 {
 
     /**
@@ -52,5 +52,11 @@ class AurynDic implements Dic
     public function factory(string $class, string $factoryClass): void
     {
         $this->auryn->delegate($class, $factoryClass);
+    }
+
+    public function share(string $class, $instance): void
+    {
+        $this->auryn->share($instance);
+        $this->bind($class, get_class($instance));
     }
 }

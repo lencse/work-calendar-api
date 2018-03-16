@@ -2,9 +2,11 @@
 
 namespace Test\Unit\Adapter;
 
+use DateTimeInterface;
 use Lencse\Adapter\DependencyInjection\AurynDic;
 use Lencse\Application\Controller\GetAllTypesController;
 use Lencse\Application\Controller\GetTypeController;
+use Lencse\Date\DateHelper;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
 use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
@@ -56,5 +58,13 @@ class AurynDicTest extends TestCase
         $dic->factory(DayRepository::class, HuSpecialDayRepositoryFactory::class);
         $result = $dic->make(DayRepository::class);
         $this->assertTrue($result instanceof DayRepository);
+    }
+
+    public function testShare()
+    {
+        $dic = new AurynDic();
+        $dic->share(DateTimeInterface::class, DateHelper::dateTime('2018-03-15'));
+        $result = $dic->make(DateTimeInterface::class);
+        $this->assertEquals('2018', $result->format('Y'));
     }
 }

@@ -4,6 +4,7 @@ namespace Test\Unit\Adapter;
 
 use GuzzleHttp\Psr7\ServerRequest;
 use Lencse\Adapter\Routing\FastrouteRouter;
+use Lencse\Application\Controller\GetDayIntervalController;
 use Lencse\Application\Exception\BadMethodException;
 use Lencse\Application\Exception\NotFoundException;
 use Lencse\Application\Routing\Route;
@@ -40,6 +41,21 @@ class FastrouteRouterTest extends TestCase
         $response = $router->route($request);
 
         $this->assertEquals(['id' => 1], $response->getParams());
+    }
+
+    public function testRequestParams()
+    {
+        $router = new FastrouteRouter();
+        $router->add(new Route('/test', GetDayIntervalController::class));
+
+        $request = new ServerRequest(
+            'GET',
+            '/test'
+        );
+
+        $response = $router->route($request);
+
+        $this->assertEquals(['request' => $request], $response->getParams());
     }
 
     public function testNotFound()

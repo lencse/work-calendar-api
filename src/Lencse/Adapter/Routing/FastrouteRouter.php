@@ -43,6 +43,19 @@ class FastrouteRouter implements Router
             throw new NotFoundException();
         }
 
-        return new RoutingResponse((string) $routeInfo[1], (array) $routeInfo[2]);
+        $handler = (string) $routeInfo[1];
+        $routeParams = (array) $routeInfo[2];
+
+        if (class_exists($handler)) {
+            $reflection = new \ReflectionClass($handler);
+            $params = $reflection->getMethod('__invoke')->getParameters();
+            foreach ($params as $param) {
+                if (ServerRequestInterface::class === $param->getType()->getName()) {
+                    $routeParams[$param->getName()] = $request;
+                }
+            }
+        }
+
+        return new RoutingResponse($handler, $routeParams);
     }
 }

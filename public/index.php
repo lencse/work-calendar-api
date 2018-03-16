@@ -2,34 +2,28 @@
 
 namespace App;
 
-use Auryn\Injector;
-use FastRoute\RouteCollector;
-use function FastRoute\simpleDispatcher;
-use GuzzleHttp\Psr7\Request;
-use Lencse\Application\Controller\GetAllTypesController;
-use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
-use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
+use GuzzleHttp\Psr7\ServerRequest;
+use Lencse\Application\Bootstrap;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$injector = new Injector();
+$request = new ServerRequest(
+    $_SERVER['REQUEST_METHOD'],
+    $_SERVER['REQUEST_URI']
+);
 
-Request::
+$request = $request->withQueryParams($_GET);
 
-$injector->alias(DayTypeRepository::class, HuDayTypeRepository::class);
+$config = require __DIR__ . '/../config/config.php';
+$bootstrap = new Bootstrap($config);
+$app = $bootstrap->createApplication();
 
-$repo = $injector->make(DayTypeRepository::class);
+$response = $app->run($request);
 
-//var_dump($repo->getAll());
+foreach ($response->getHeaders() as $header => $headerValues) {
+    foreach ($headerValues as $value) {
+        header($header . ': ' . $value);
+    }
+}
 
-$dispatcher = simpleDispatcher(function (RouteCollector $routes) {
-    $routes->addRoute('GET', '/api/v1/day-types', GetAllTypesController::class);
-});
-
-$method = $_SERVER['REQUEST_METHOD'];
-$uri = $_SERVER['REQUEST_URI'];
-
-$routeInfo = $dispatcher->dispatch($method, $uri);
-var_dump($routeInfo);
-
-//$request = new Request();
+echo $response->getBody();
