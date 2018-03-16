@@ -17,7 +17,7 @@ class ApplicationBench
             'GET',
             '/api/v1/day-types'
         );
-       $app->run($request);
+        $app->run($request);
     }
 
     public function benchDayIntervalRoute()
