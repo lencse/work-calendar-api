@@ -25,11 +25,11 @@ deployment:
         branch: master
         heroku:
             appname: work-calendar-api-staging
-workflows:
-    version: 2
-    standard:
-        jobs:
-            - build
-            - deploy-to-staging:
-                requires:
-                    - build
+#workflows:
+#    version: 2
+#    standard:
+#        jobs:
+#            - build
+#            - deploy-to-staging:
+#                requires:
+#                    - build
