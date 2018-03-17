@@ -30,7 +30,16 @@ class GetDayIntervalController
     {
         $params = $request->getQueryParams();
         if (!isset($params['from']) || !isset($params['to'])) {
-            throw new BadRequestException();
+            $missing = [];
+            if (!isset($params['from'])) {
+                $missing[] = "'from'";
+            }
+            if (!isset($params['to'])) {
+                $missing[] = "'to'";
+            }
+            $message = sprintf('Missing parameters: %s', implode(', ', $missing));
+
+            throw new BadRequestException($message);
         }
         $from = DateTimeImmutable::createFromFormat('Y-m-d', (string) $params['from']);
         $to = DateTimeImmutable::createFromFormat('Y-m-d', (string) $params['to']);

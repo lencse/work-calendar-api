@@ -145,5 +145,6 @@ class ApplicationTest extends TestCase
         $result = json_decode($response->getBody(), true);
         $this->assertEquals(400, $result['errors']['0']['code']);
         $this->assertEquals('Bad Request', $result['errors']['0']['status']);
+        $this->assertEquals("Missing parameters: 'to'", $result['errors']['0']['title']);
     }
 }

@@ -49,7 +49,13 @@ class NeomerxJsonApi implements JsonApi
      */
     public function transformException(ApplicationException $exception): string
     {
-        $error = new Error(null, null, $exception->getStatus(), (string) $exception->getCode());
+        $error = new Error(
+            null,
+            null,
+            $exception->getStatus(),
+            (string) $exception->getCode(),
+            $exception->getMessage()
+        );
         return $this->jsonApi->encodeError($error);
     }
 }
