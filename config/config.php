@@ -42,10 +42,10 @@ return [
     ],
     'routes' => [
         '/api/v1/day-types' => GetAllTypesController::class,
-        '/api/v1/day-types/{key}' => GetTypeController::class,
+        '/api/v1/day-types/{key:[a-z-]+}' => GetTypeController::class,
         '/api/v1/days/special' => GetAllSpecialDaysController::class,
-        '/api/v1/days/special/{year}' => GetSpecialDaysForYearController::class,
-        '/api/v1/days/{day}' => GetADayController::class,
+        '/api/v1/days/special/{year:\d{4}}' => GetSpecialDaysForYearController::class,
+        '/api/v1/days/{day:\d{4}-\d{2}-\d{2}}' => GetADayController::class,
         '/api/v1/days' => GetDayIntervalController::class,
     ],
 ];

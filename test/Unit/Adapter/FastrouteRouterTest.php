@@ -84,4 +84,18 @@ class FastrouteRouterTest extends TestCase
         $this->expectException(BadMethodException::class);
         $router->route($request);
     }
+
+    public function testParameterFormat()
+    {
+        $router = new FastrouteRouter();
+        $router->add(new Route('/test/{day:\d{4}-\d{2}-\d{2}}', 'TestHandler'));
+
+        $request = new ServerRequest(
+            'POST',
+            '/test/1'
+        );
+
+        $this->expectException(NotFoundException::class);
+        $router->route($request);
+    }
 }

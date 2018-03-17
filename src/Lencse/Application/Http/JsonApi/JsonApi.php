@@ -2,6 +2,8 @@
 
 namespace Lencse\Application\Http\JsonApi;
 
+use Lencse\Application\Exception\ApplicationException;
+
 interface JsonApi
 {
 
@@ -10,4 +12,6 @@ interface JsonApi
      * @return string
      */
     public function transform($resource): string;
+
+    public function transformException(ApplicationException $exception): string;
 }

@@ -4,10 +4,12 @@ namespace Lencse\Adapter\Http\JsonApi;
 
 use Lencse\Adapter\Http\JsonApi\Schema\DaySchema;
 use Lencse\Adapter\Http\JsonApi\Schema\DayTypeSchema;
+use Lencse\Application\Exception\ApplicationException;
 use Lencse\Application\Http\JsonApi\JsonApi;
 use Lencse\WorkCalendar\Calendar\Day\Day;
 use Lencse\WorkCalendar\Calendar\DayType\DayType;
 use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
+use Neomerx\JsonApi\Document\Error;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Encoder\EncoderOptions;
 
@@ -37,5 +39,17 @@ class NeomerxJsonApi implements JsonApi
     public function transform($resource): string
     {
         return $this->jsonApi->encodeData($resource);
+    }
+
+    /**
+     * @param ApplicationException $exception
+     * @return string
+     *
+     * @psalm-suppress MixedInferredReturnType
+     */
+    public function transformException(ApplicationException $exception): string
+    {
+        $error = new Error(null, null, $exception->getStatus(), (string) $exception->getCode());
+        return $this->jsonApi->encodeError($error);
     }
 }

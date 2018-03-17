@@ -8,4 +8,6 @@ interface ResponseTransformer
 {
 
     public function createResponse(string $body): ResponseInterface;
+
+    public function createErrorResponse(string $body, int $errorCode): ResponseInterface;
 }

@@ -3,6 +3,7 @@
 namespace Lencse\Application;
 
 use Lencse\Application\DependencyInjection\Caller;
+use Lencse\Application\Exception\ApplicationException;
 use Lencse\Application\Http\JsonApi\JsonApi;
 use Lencse\Application\Http\Messaging\ResponseTransformer;
 use Lencse\Application\Routing\RouteCaller;
@@ -37,9 +38,15 @@ class Application
 
     public function run(ServerRequestInterface $request): ResponseInterface
     {
-        $result = $this->routeCaller->call($request);
-        $body = $this->jsonApi->transform($result);
+        try {
+            $result = $this->routeCaller->call($request);
+            $body = $this->jsonApi->transform($result);
 
-        return $this->responseTransformer->createResponse($body);
+            return $this->responseTransformer->createResponse($body);
+        } catch (ApplicationException $e) {
+            $body = $this->jsonApi->transformException($e);
+
+            return $this->responseTransformer->createErrorResponse($body, $e->getCode());
+        }
     }
 }

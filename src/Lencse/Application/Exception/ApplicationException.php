@@ -4,6 +4,8 @@ namespace Lencse\Application\Exception;
 
 use Exception;
 
-class ApplicationException extends Exception
+abstract class ApplicationException extends Exception
 {
+
+    abstract public function getStatus(): string;
 }

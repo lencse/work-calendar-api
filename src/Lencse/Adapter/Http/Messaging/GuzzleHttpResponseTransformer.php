@@ -19,4 +19,15 @@ class GuzzleHttpResponseTransformer implements ResponseTransformer
 
         return $response;
     }
+
+    public function createErrorResponse(string $body, int $errorCode): ResponseInterface
+    {
+        $response = new Response(
+            $errorCode,
+            ['Content-Type' => 'application/vnd.api+json'],
+            $body
+        );
+
+        return $response;
+    }
 }
