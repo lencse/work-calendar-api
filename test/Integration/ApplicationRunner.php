@@ -69,7 +69,7 @@ class ApplicationRunner
         return $app->run($request);
     }
 
-    public function callDayIntervalRoute(): ResponseInterface
+    public function callDayIntervalRoute(string $from, string $to): ResponseInterface
     {
         $config = require __DIR__ . '/../../config/config.php';
         $bootstrap = new Bootstrap($config);
@@ -78,6 +78,6 @@ class ApplicationRunner
             'GET',
             '/api/v1/days'
         );
-        return $app->run($request->withQueryParams(['from' => '2018-01-01', 'to' => '2018-01-03']));
+        return $app->run($request->withQueryParams(['from' => $from, 'to' => $to]));
     }
 }

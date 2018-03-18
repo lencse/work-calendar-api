@@ -51,7 +51,7 @@ class ApplicationTest extends TestCase
 
     public function testDayIntervalRoute()
     {
-        $response = $this->app->callDayIntervalRoute();
+        $response = $this->app->callDayIntervalRoute('2018-01-01', '2018-01-10');
         $this->assertEquals(200, $response->getStatusCode());
     }
 

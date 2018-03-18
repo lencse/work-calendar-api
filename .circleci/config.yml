@@ -20,6 +20,22 @@ jobs:
             - run:
                 name: Test
                 command: composer test-all
+    benchmark:
+        docker:
+            - image: circleci/php:7.2-browsers
+        working_directory: ~/repo
+        steps:
+            - checkout
+            - restore_cache:
+                keys:
+                - v1-dependencies-{{ checksum "composer.json" }}
+                - v1-dependencies-
+            - run:
+                name: Composer Install
+                command: composer install -n --prefer-dist
+            - run:
+                name: Test
+                command: composer benhmark
     deploy-to-staging:
         docker:
             - image: circleci/php:7.2-browsers
@@ -44,5 +60,8 @@ workflows:
         jobs:
             - build
             - deploy-to-staging:
+                requires:
+                    - build
+            - benchmark:
                 requires:
                     - build
