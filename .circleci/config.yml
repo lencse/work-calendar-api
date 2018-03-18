@@ -35,7 +35,7 @@ jobs:
                 command: composer install -n --prefer-dist
             - run:
                 name: Test
-                command: composer benhmark
+                command: composer benchmark
     deploy-to-staging:
         docker:
             - image: circleci/php:7.2-browsers
