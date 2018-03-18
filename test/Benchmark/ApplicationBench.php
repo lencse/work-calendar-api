@@ -2,8 +2,6 @@
 
 namespace Test\Benchmark;
 
-use GuzzleHttp\Psr7\ServerRequest;
-use Lencse\Application\Bootstrap;
 use Test\Integration\ApplicationRunner;
 
 class ApplicationBench
@@ -19,32 +17,32 @@ class ApplicationBench
         $this->app = new ApplicationRunner();
     }
 
-    public function benchDayTypesRoute()
+    public function benchDayTypes()
     {
         $this->app->callDayTypesRoute();
     }
 
-    public function benchDayTypeRoute()
+    public function benchDayType()
     {
         $this->app->callDayTypeRoute();
     }
 
-    public function benchSpecialDaysForAYearRoute()
+    public function benchSpecialDaysForAYear()
     {
         $this->app->callSpecialDaysForAYearRoute();
     }
 
-    public function benchSpecialDaysRoute()
+    public function benchSpecialDays()
     {
         $this->app->callSpecialDaysRoute();
     }
 
-    public function benchADayRoute()
+    public function benchADay()
     {
         $this->app->callADayRoute();
     }
 
-    public function benchDayIntervalRoute()
+    public function benchDayInterval()
     {
         $this->app->callDayIntervalRoute('2018-01-01', '2018-12-31');
     }
