@@ -36,6 +36,9 @@ jobs:
             - run:
                 name: Benchmark
                 command: composer benchmark
+            - run:
+                name: Benchmark
+                command: composer benchmark-trace
     deploy-to-staging:
         docker:
             - image: circleci/php:7.2-browsers
