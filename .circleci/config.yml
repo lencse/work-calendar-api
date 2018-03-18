@@ -65,7 +65,7 @@ jobs:
                 name: Smoke Test
                 command: |
                     composer install
-                    cigar --url=https://work-calendar-api-staging.herokuapp.com/
+                    vendor/bin/cigar --url=https://work-calendar-api-staging.herokuapp.com/
 workflows:
     version: 2
     standard:
