@@ -107,7 +107,7 @@ workflows:
             - deploy-to-prod:
                 type: approval
                 requires:
-                    - build
+                    - deploy-to-staging
             - benchmark:
                 requires:
                     - build
