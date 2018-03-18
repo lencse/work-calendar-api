@@ -65,13 +65,47 @@ jobs:
                 name: Smoke Test
                 command: |
                     composer install
-                    vendor/bin/cigar --url=https://work-calendar-api-staging.herokuapp.com/
+                    vendor/bin/cigar --url=https://$HEROKU_APP_NAME_STAGING.herokuapp.com/
+    deploy-to-prod:
+        docker:
+            - image: circleci/php:7.2-browsers
+        working_directory: ~/repo
+        steps:
+            - checkout
+            - add_ssh_keys:
+                fingerprints:
+                     - "f2:40:52:df:7e:e6:b3:4d:18:55:4f:29:04:0b:59:6c"
+            - run:
+                name: Heroku Init
+                command:
+                    bash .circleci/setup-heroku.sh
+            - run:
+                name: Deploy to Heroku Production Server
+                command: |
+                    heroku git:remote -a $HEROKU_APP_NAME_PROD
+                    git push --force git@heroku.com:$HEROKU_APP_NAME_PROD.git HEAD:refs/heads/master
+            - restore_cache:
+                keys:
+                - v1-dependencies-{{ checksum "composer.json" }}
+                - v1-dependencies-
+            - run:
+                name: Composer Install
+                command: composer install -n --prefer-dist
+            - run:
+                name: Smoke Test
+                command: |
+                    composer install
+                    vendor/bin/cigar --url=https://$HEROKU_APP_NAME_PROD.herokuapp.com/
 workflows:
     version: 2
     standard:
         jobs:
             - build
             - deploy-to-staging:
+                requires:
+                    - build
+            - deploy-to-prod:
+                type: approval
                 requires:
                     - build
             - benchmark:
