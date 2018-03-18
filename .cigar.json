@@ -1,0 +1,38 @@
+[
+    {
+        "url": "/api/v1/day-types",
+        "status": 200,
+        "content-type": "application/vnd.api+json",
+        "content": "switched-working-day"
+    },
+    {
+        "url": "/api/v1/day-types/switched-working-day",
+        "status": 200,
+        "content-type": "application/vnd.api+json",
+        "content": "switched-working-day"
+    },
+    {
+        "url": "/api/v1/days/special",
+        "status": 200,
+        "content-type": "application/vnd.api+json",
+        "content": "1848"
+    },
+    {
+        "url": "/api/v1/days/special/2018",
+        "status": 200,
+        "content-type": "application/vnd.api+json",
+        "content": "1956"
+    },
+    {
+        "url": "/api/v1/days/2018-03-15",
+        "status": 200,
+        "content-type": "application/vnd.api+json",
+        "content": "1848"
+    },
+    {
+        "url": "/api/v1/days?from=2018-03-01&to=2018-03-31",
+        "status": 200,
+        "content-type": "application/vnd.api+json",
+        "content": "1848"
+    }
+]

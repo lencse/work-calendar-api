@@ -34,7 +34,7 @@ jobs:
                 name: Composer Install
                 command: composer install -n --prefer-dist
             - run:
-                name: Test
+                name: Benchmark
                 command: composer benchmark
     deploy-to-staging:
         docker:
@@ -54,6 +54,11 @@ jobs:
                 command: |
                     heroku git:remote -a $HEROKU_APP_NAME_STAGING
                     git push --force git@heroku.com:$HEROKU_APP_NAME_STAGING.git HEAD:refs/heads/master
+            - run
+                name: Smoke Test
+                command: |
+                    composer install
+                    cigar --url=https://work-calendar-api-staging.herokuapp.com/
 workflows:
     version: 2
     standard:
