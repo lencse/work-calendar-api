@@ -50,6 +50,9 @@ jobs:
                 command:
                     bash .circleci/setup-heroku.sh
             - run:
+                name: List files
+                command: find .
+            - run:
                 name: Deploy to Heroku Staging Server
                 command: |
                     heroku git:remote -a $HEROKU_APP_NAME_STAGING
@@ -79,6 +82,9 @@ jobs:
                 name: Heroku Init
                 command:
                     bash .circleci/setup-heroku.sh
+            - run:
+                name: List files
+                command: find .
             - run:
                 name: Deploy to Heroku Production Server
                 command: |
