@@ -104,13 +104,13 @@ workflows:
             - deploy-to-staging:
                 requires:
                     - build
-            - deploy-to-prod-approval:
+            - approve:
                 type: approval
                 requires:
                     - deploy-to-staging
             - deploy-to-prod:
                 requires:
-                    - deploy-to-prod-approval
+                    - approve
             - benchmark:
                 requires:
                     - build
