@@ -50,9 +50,6 @@ jobs:
                 command:
                     bash .circleci/setup-heroku.sh
             - run:
-                name: List files
-                command: find .
-            - run:
                 name: Deploy to Heroku Staging Server
                 command: |
                     heroku git:remote -a $HEROKU_APP_NAME_STAGING
@@ -83,23 +80,14 @@ jobs:
                 command:
                     bash .circleci/setup-heroku.sh
             - run:
-                name: List files 1
-                command: find .
-            - run:
                 name: Deploy to Heroku Production Server
                 command: |
                     heroku git:remote -a $HEROKU_APP_NAME_PROD
                     git push --force git@heroku.com:$HEROKU_APP_NAME_PROD.git HEAD:refs/heads/master
-            - run:
-                name: List files 2
-                command: find .
             - restore_cache:
                 keys:
                 - v1-dependencies-{{ checksum "composer.json" }}
                 - v1-dependencies-
-            - run:
-                name: List files 3
-                command: find .
             - run:
                 name: Composer Install
                 command: composer install -n --prefer-dist
