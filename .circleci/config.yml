@@ -63,9 +63,7 @@ jobs:
                 command: composer install -n --prefer-dist
             - run:
                 name: Smoke Test
-                command: |
-                    composer install
-                    vendor/bin/cigar --url=$APP_URL_STAGING
+                command: vendor/bin/cigar --url=$APP_URL_STAGING
     deploy-to-prod:
         docker:
             - image: circleci/php:7.2-browsers
@@ -93,9 +91,7 @@ jobs:
                 command: composer install -n --prefer-dist
             - run:
                 name: Smoke Test
-                command: |
-                    composer install
-                    vendor/bin/cigar --url=$APP_URL_PROD
+                command: vendor/bin/cigar --url=$APP_URL_PROD
 workflows:
     version: 2
     standard:

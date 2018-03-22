@@ -34,5 +34,11 @@
         "status": 200,
         "content-type": "application/vnd.api+json",
         "content": "1848"
+    },
+    {
+        "url": "/loaderio-00efb7dd96a9aa6feb362e05793b3c86.txt",
+        "status": 200,
+        "content-type": "text/plain",
+        "content": "loaderio-00efb7dd96a9aa6feb362e05793b3c86"
     }
 ]
