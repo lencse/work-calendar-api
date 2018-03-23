@@ -22,8 +22,13 @@ use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
 
-$dotenv = new Dotenv(__DIR__ . '/../');
-$dotenv->load();
+$appRoot = __DIR__ . '/../';
+
+if (file_exists($appRoot . '.env')) {
+    var_dump(1111);
+    $dotenv = new Dotenv($appRoot);
+    $dotenv->load();
+}
 
 return [
     'dic' => [
