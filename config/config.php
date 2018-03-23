@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use Dotenv\Dotenv;
 use Lencse\Adapter\DependencyInjection\AurynDic;
 use Lencse\Adapter\Http\JsonApi\NeomerxJsonApi;
 use Lencse\Adapter\Http\Messaging\GuzzleHttpResponseTransformer;
@@ -20,6 +21,9 @@ use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
+
+$dotenv = new Dotenv(__DIR__ . '/../');
+$dotenv->load();
 
 return [
     'dic' => [
@@ -48,4 +52,10 @@ return [
         '/api/v1/days/{day:\d{4}-\d{2}-\d{2}}' => GetADayController::class,
         '/api/v1/days' => GetDayIntervalController::class,
     ],
+    'sentry' => [
+        'dsn' => getenv('SENTRY_DSN'),
+        'config' => [
+            'environment' => getenv('SENTRY_ENVIRONMENT'),
+        ],
+    ]
 ];
