@@ -5,7 +5,7 @@ namespace App;
 use GuzzleHttp\Psr7\ServerRequest;
 use Lencse\Application\Bootstrap;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../src/bootstrap.php';
 
 $config = require __DIR__ . '/../config/config.php';
 

@@ -2,7 +2,6 @@
 
 namespace Config;
 
-use Dotenv\Dotenv;
 use Lencse\Adapter\DependencyInjection\AurynDic;
 use Lencse\Adapter\Http\JsonApi\NeomerxJsonApi;
 use Lencse\Adapter\Http\Messaging\GuzzleHttpResponseTransformer;
@@ -21,13 +20,6 @@ use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
 use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
-
-$appRoot = __DIR__ . '/../';
-
-if (file_exists($appRoot . '.env')) {
-    $dotenv = new Dotenv($appRoot);
-    $dotenv->load();
-}
 
 return [
     'dic' => [
