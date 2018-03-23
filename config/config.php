@@ -25,7 +25,6 @@ use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
 $appRoot = __DIR__ . '/../';
 
 if (file_exists($appRoot . '.env')) {
-    var_dump(1111);
     $dotenv = new Dotenv($appRoot);
     $dotenv->load();
 }
