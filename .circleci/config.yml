@@ -20,6 +20,9 @@ jobs:
             - run:
                 name: Test
                 command: composer test-all
+            - run:
+                name: Local Smoke Test
+                command: ./smoke-test.sh
     benchmark:
         docker:
             - image: circleci/php:7.2-browsers
