@@ -21,7 +21,7 @@ class GetADayController
 
     public function __invoke(string $day): Day
     {
-        $date = DateTimeImmutable::createFromFormat('Y-m-d', $day);
+        $date = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $day . ' 00:00:00');
         return $this->calendar->getDay($date);
     }
 }

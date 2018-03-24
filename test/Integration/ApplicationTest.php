@@ -4,6 +4,7 @@ namespace Test\Integration;
 
 use GuzzleHttp\Psr7\ServerRequest;
 use Lencse\Application\Bootstrap;
+use Lencse\Date\DateHelper;
 use PHPUnit\Framework\TestCase;
 
 class ApplicationTest extends TestCase
@@ -47,6 +48,8 @@ class ApplicationTest extends TestCase
     {
         $response =$this->app->callADayRoute();
         $this->assertEquals(200, $response->getStatusCode());
+        $content = json_decode($response->getBody(), true);
+        $this->assertEquals(DateHelper::dateTime('2018-02-01')->format('c'), $content['data']['attributes']['date']);
     }
 
     public function testDayIntervalRoute()
