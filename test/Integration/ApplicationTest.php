@@ -104,4 +104,21 @@ class ApplicationTest extends TestCase
         $this->assertEquals('Bad Request', $result['errors']['0']['status']);
         $this->assertEquals("Missing parameters: 'to'", $result['errors']['0']['title']);
     }
+
+    public function testBadRequestForBadFormatl()
+    {
+        $app = Bootstrap::createApplication();
+
+        $request = new ServerRequest(
+            'GET',
+            '/api/v1/days'
+        );
+        $response = $app->run($request->withQueryParams(['from' => '2018-01-01', 'to' => '2018-01-xx']));
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $result = json_decode($response->getBody(), true);
+        $this->assertEquals(400, $result['errors']['0']['code']);
+        $this->assertEquals('Bad Request', $result['errors']['0']['status']);
+        $this->assertEquals('Invalid date format: 2018-01-xx', $result['errors']['0']['title']);
+    }
 }

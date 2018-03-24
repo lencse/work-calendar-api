@@ -29,6 +29,19 @@ class GetDayIntervalController
     public function __invoke(ServerRequestInterface $request): array
     {
         $params = $request->getQueryParams();
+        $this->validateParams($params);
+        $from = DateTimeImmutable::createFromFormat('Y-m-d', (string) $params['from']);
+        $to = DateTimeImmutable::createFromFormat('Y-m-d', (string) $params['to']);
+        return $this->calendar->getInterval($from, $to);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     * @throws BadRequestException
+     */
+    private function validateParams($params): void
+    {
         if (!isset($params['from']) || !isset($params['to'])) {
             $missing = [];
             if (!isset($params['from'])) {
@@ -38,11 +51,13 @@ class GetDayIntervalController
                 $missing[] = "'to'";
             }
             $message = sprintf('Missing parameters: %s', implode(', ', $missing));
-
             throw new BadRequestException($message);
         }
-        $from = DateTimeImmutable::createFromFormat('Y-m-d', (string) $params['from']);
-        $to = DateTimeImmutable::createFromFormat('Y-m-d', (string) $params['to']);
-        return $this->calendar->getInterval($from, $to);
+        foreach (['from', 'to'] as $key) {
+            if (!preg_match('/\d{4}-\d{2}-\d{2}/', (string)$params[$key])) {
+                $message = sprintf('Invalid date format: %s', $params[$key]);
+                throw new BadRequestException($message);
+            }
+        }
     }
 }
