@@ -49,9 +49,10 @@ return [
         '/api/v1/days' => GetDayIntervalController::class,
     ],
     'sentry' => [
-        'dsn' => getenv('SENTRY_DSN'),
+        'enabled' => $_ENV['SENTRY_ENABLED'] ?? 'false',
+        'dsn' => $_ENV['SENTRY_DSN'] ?? '',
         'config' => [
-            'environment' => getenv('SENTRY_ENVIRONMENT'),
+            'environment' => $_ENV['SENTRY_ENVIRONMENT'] ?? 'development',
         ],
     ]
 ];

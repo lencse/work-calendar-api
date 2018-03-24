@@ -11,7 +11,9 @@ if (file_exists(APP_ROOT . '/.env')) {
 
 $config = require __DIR__ . '/../config/config.php';
 
-$ravenClient = new \Raven_Client($config['sentry']['dsn'], $config['sentry']['config']);
-$ravenClient->install();
+if ('true' === $config['sentry']['enabled']) {
+    $ravenClient = new \Raven_Client($config['sentry']['dsn'], $config['sentry']['config']);
+    $ravenClient->install();
+}
 
 \Lencse\Application\Bootstrap::init($config);
