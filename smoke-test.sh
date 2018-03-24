@@ -6,6 +6,7 @@ function main {
     sleep 3
     vendor/bin/cigar --url=http://localhost:8220/
     local code=$?
+    echo $pid
     kill -9 $pid
     exit $code
 }
