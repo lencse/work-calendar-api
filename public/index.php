@@ -5,15 +5,9 @@ namespace App;
 use GuzzleHttp\Psr7\ServerRequest;
 use Lencse\Application\Bootstrap;
 
-require_once __DIR__ . '/../src/bootstrap.php';
+require_once __DIR__ . '/../bootstrap/bootstrap.php';
 
-$config = require __DIR__ . '/../config/config.php';
-
-$ravenClient = new \Raven_Client($config['sentry']['dsn'], $config['sentry']['config']);
-$ravenClient->install();
-
-$bootstrap = new Bootstrap($config);
-$app = $bootstrap->createApplication();
+$app = Bootstrap::createApplication();
 
 $request = new ServerRequest(
     $_SERVER['REQUEST_METHOD'],

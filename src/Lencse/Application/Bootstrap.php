@@ -26,12 +26,17 @@ class Bootstrap
     private $router;
 
     /**
+     * @var array
+     */
+    private static $config = [];
+
+    /**
      * @param array $config
      *
      * @psalm-suppress MixedArrayAccess
      * @psalm-suppress MixedArgument
      */
-    public function __construct(array $config)
+    private function __construct(array $config)
     {
         $this->createDic((string) $config['dic']['class']);
         $this->setupDic($config['dic']);
@@ -39,10 +44,17 @@ class Bootstrap
         $this->setupRouter($config['routes']);
     }
 
-    public function createApplication(): Application
+    public static function init(array $config): void
     {
+        self::$config = $config;
+    }
+
+    public static function createApplication(): Application
+    {
+        $instance = new self(self::$config);
         /** @var Application $app */
-        $app = $this->dic->make(Application::class);
+        $app = $instance->dic->make(Application::class);
+
         return $app;
     }
 

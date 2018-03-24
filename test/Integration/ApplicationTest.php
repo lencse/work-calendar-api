@@ -57,9 +57,7 @@ class ApplicationTest extends TestCase
 
     public function testNotFound()
     {
-        $config = require __DIR__ . '/../../config/config.php';
-        $bootstrap = new Bootstrap($config);
-        $app = $bootstrap->createApplication();
+        $app = Bootstrap::createApplication();
         $request = new ServerRequest(
             'GET',
             '/error'
@@ -74,9 +72,7 @@ class ApplicationTest extends TestCase
 
     public function testBadMethod()
     {
-        $config = require __DIR__ . '/../../config/config.php';
-        $bootstrap = new Bootstrap($config);
-        $app = $bootstrap->createApplication();
+        $app = Bootstrap::createApplication();
         $request = new ServerRequest(
             'POST',
             '/api/v1/day-types'
@@ -91,9 +87,8 @@ class ApplicationTest extends TestCase
 
     public function testBadRequest()
     {
-        $config = require __DIR__ . '/../../config/config.php';
-        $bootstrap = new Bootstrap($config);
-        $app = $bootstrap->createApplication();
+        $app = Bootstrap::createApplication();
+
         $request = new ServerRequest(
             'GET',
             '/api/v1/days'
