@@ -36,11 +36,10 @@ class GetDayIntervalController
     }
 
     /**
-     * @param $params
-     * @return mixed
+     * @param array $params
      * @throws BadRequestException
      */
-    private function validateParams($params): void
+    private function validateParams(array $params): void
     {
         if (!isset($params['from']) || !isset($params['to'])) {
             $missing = [];
