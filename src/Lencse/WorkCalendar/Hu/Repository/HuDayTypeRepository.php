@@ -3,8 +3,8 @@
 namespace Lencse\WorkCalendar\Hu\Repository;
 
 use DateTimeInterface;
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
-use Lencse\WorkCalendar\Calendar\Repository\InMemoryDayTypeRepository;
+use Lencse\WorkCalendar\Calendar\DayType\Entity\DayType;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\InMemoryDayTypeRepository;
 
 class HuDayTypeRepository extends InMemoryDayTypeRepository
 {

@@ -2,7 +2,7 @@
 
 namespace Test\Unit\Calendar\Mock;
 
-use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepositoryFactory;
+use Lencse\WorkCalendar\Calendar\Day\Repository\SpecialDayRepositoryFactory;
 
 class MockDayRepositoryFactory extends SpecialDayRepositoryFactory
 {

@@ -3,8 +3,8 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Day\Day;
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
+use Lencse\WorkCalendar\Calendar\DayType\Entity\DayType;
 use PHPUnit\Framework\TestCase;
 
 class DayTest extends TestCase

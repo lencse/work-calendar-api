@@ -3,7 +3,7 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Day\Day;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 
 class CalendarIntervalTest extends CalendarBaseTest

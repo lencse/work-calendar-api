@@ -3,8 +3,8 @@
 namespace Lencse\Application\Controller;
 
 use DateTimeImmutable;
-use Lencse\WorkCalendar\Calendar\Day\Day;
-use Lencse\WorkCalendar\Calendar\Repository\Calendar;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
+use Lencse\WorkCalendar\Calendar\Calendar;
 
 class GetADayController
 {

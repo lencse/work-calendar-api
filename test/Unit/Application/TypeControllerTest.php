@@ -5,7 +5,7 @@ namespace Test\Unit\Application;
 use Lencse\Application\Controller\GetAllTypesController;
 use Lencse\Application\Controller\GetTypeController;
 use Lencse\Application\Exception\NotFoundException;
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
+use Lencse\WorkCalendar\Calendar\DayType\Entity\DayType;
 use PHPUnit\Framework\TestCase;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 

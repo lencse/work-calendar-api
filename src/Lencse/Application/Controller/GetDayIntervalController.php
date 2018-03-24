@@ -4,8 +4,8 @@ namespace Lencse\Application\Controller;
 
 use DateTimeImmutable;
 use Lencse\Application\Exception\BadRequestException;
-use Lencse\WorkCalendar\Calendar\Day\Day;
-use Lencse\WorkCalendar\Calendar\Repository\Calendar;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
+use Lencse\WorkCalendar\Calendar\Calendar;
 use Psr\Http\Message\ServerRequestInterface;
 
 class GetDayIntervalController

@@ -1,9 +1,10 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar\Repository;
+namespace Lencse\WorkCalendar\Calendar\DayType\Repository;
 
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
-use Lencse\WorkCalendar\Calendar\Exception\WrongDayTypeException;
+use Lencse\WorkCalendar\Calendar\DayType\Entity\DayType;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\DayTypeRepository;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\Exception\WrongDayTypeException;
 
 abstract class InMemoryDayTypeRepository implements DayTypeRepository
 {

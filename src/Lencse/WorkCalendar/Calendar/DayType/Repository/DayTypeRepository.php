@@ -1,9 +1,9 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar\Repository;
+namespace Lencse\WorkCalendar\Calendar\DayType\Repository;
 
 use DateTimeInterface;
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
+use Lencse\WorkCalendar\Calendar\DayType\Entity\DayType;
 
 interface DayTypeRepository
 {

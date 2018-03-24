@@ -2,7 +2,7 @@
 
 namespace Lencse\Adapter\Http\JsonApi\Schema;
 
-use Lencse\WorkCalendar\Calendar\Day\Day;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
 use Neomerx\JsonApi\Schema\BaseSchema;
 
 class DaySchema extends BaseSchema

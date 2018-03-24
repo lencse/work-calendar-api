@@ -2,8 +2,8 @@
 
 namespace Lencse\Application\Controller;
 
-use Lencse\WorkCalendar\Calendar\Day\Day;
-use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
+use Lencse\WorkCalendar\Calendar\Day\Repository\DayRepository;
 
 class GetSpecialDaysForYearController
 {

@@ -2,7 +2,7 @@
 
 namespace Lencse\WorkCalendar\Hu\Repository;
 
-use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepositoryFactory;
+use Lencse\WorkCalendar\Calendar\Day\Repository\SpecialDayRepositoryFactory;
 
 class HuSpecialDayRepositoryFactory extends SpecialDayRepositoryFactory
 {

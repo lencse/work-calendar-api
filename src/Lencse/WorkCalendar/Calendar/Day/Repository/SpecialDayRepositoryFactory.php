@@ -1,9 +1,12 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar\Repository;
+namespace Lencse\WorkCalendar\Calendar\Day\Repository;
 
 use DateTimeImmutable;
-use Lencse\WorkCalendar\Calendar\Day\Day;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
+use Lencse\WorkCalendar\Calendar\Day\Repository\DayRepository;
+use Lencse\WorkCalendar\Calendar\Day\Repository\InMemoryDayRepository;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\DayTypeRepository;
 
 abstract class SpecialDayRepositoryFactory
 {

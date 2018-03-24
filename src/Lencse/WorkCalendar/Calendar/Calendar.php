@@ -1,12 +1,14 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar\Repository;
+namespace Lencse\WorkCalendar\Calendar;
 
 use DateInterval;
 use DateTime;
 use DateTimeInterface;
 use DateTimeImmutable;
-use Lencse\WorkCalendar\Calendar\Day\Day;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
+use Lencse\WorkCalendar\Calendar\Day\Repository\DayRepository;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\DayTypeRepository;
 
 class Calendar
 {

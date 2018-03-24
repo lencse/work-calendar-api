@@ -16,8 +16,8 @@ use Lencse\Application\DependencyInjection\Caller;
 use Lencse\Application\Http\JsonApi\JsonApi;
 use Lencse\Application\Http\Messaging\ResponseTransformer;
 use Lencse\Application\Routing\Router;
-use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
-use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
+use Lencse\WorkCalendar\Calendar\Day\Repository\DayRepository;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\DayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
 

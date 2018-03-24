@@ -1,6 +1,6 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar\DayType;
+namespace Lencse\WorkCalendar\Calendar\DayType\Entity;
 
 class DayType
 {

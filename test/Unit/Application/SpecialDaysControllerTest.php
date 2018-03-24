@@ -4,8 +4,8 @@ namespace Test\Unit\Application;
 
 use Lencse\Application\Controller\GetAllSpecialDaysController;
 use Lencse\Application\Controller\GetSpecialDaysForYearController;
-use Lencse\WorkCalendar\Calendar\Repository\DayRepository;
-use Lencse\WorkCalendar\Calendar\Repository\SpecialDayRepositoryFactory;
+use Lencse\WorkCalendar\Calendar\Day\Repository\DayRepository;
+use Lencse\WorkCalendar\Calendar\Day\Repository\SpecialDayRepositoryFactory;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 use Lencse\WorkCalendar\Hu\Repository\HuSpecialDayRepositoryFactory;
 use PHPUnit\Framework\TestCase;

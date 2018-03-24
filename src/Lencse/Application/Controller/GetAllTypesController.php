@@ -2,8 +2,8 @@
 
 namespace Lencse\Application\Controller;
 
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
-use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
+use Lencse\WorkCalendar\Calendar\DayType\Entity\DayType;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\DayTypeRepository;
 
 class GetAllTypesController
 {

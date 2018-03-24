@@ -1,9 +1,9 @@
 <?php
 
-namespace Lencse\WorkCalendar\Calendar\Day;
+namespace Lencse\WorkCalendar\Calendar\Day\Entity;
 
 use DateTimeInterface;
-use Lencse\WorkCalendar\Calendar\DayType\DayType;
+use Lencse\WorkCalendar\Calendar\DayType\Entity\DayType;
 
 class Day
 {

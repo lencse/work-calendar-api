@@ -3,7 +3,7 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Exception\NoSpecialDayException;
+use Lencse\WorkCalendar\Calendar\Day\Repository\Exception\NoSpecialDayException;
 use PHPUnit\Framework\TestCase;
 use Test\Unit\Calendar\Mock\MockDayRepositoryFactory;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;

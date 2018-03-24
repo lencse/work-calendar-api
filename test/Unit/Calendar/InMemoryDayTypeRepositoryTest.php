@@ -3,8 +3,8 @@
 namespace Test\Unit\Calendar;
 
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Exception\WrongDayTypeException;
-use Lencse\WorkCalendar\Calendar\Repository\DayTypeRepository;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\Exception\WrongDayTypeException;
+use Lencse\WorkCalendar\Calendar\DayType\Repository\DayTypeRepository;
 use PHPUnit\Framework\TestCase;
 use Test\Unit\Calendar\Mock\MockDayTypeRepository;
 

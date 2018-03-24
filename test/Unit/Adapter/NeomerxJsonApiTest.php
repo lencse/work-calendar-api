@@ -4,7 +4,7 @@ namespace Test\Unit\Adapter;
 
 use Lencse\Adapter\Http\JsonApi\NeomerxJsonApi;
 use Lencse\Date\DateHelper;
-use Lencse\WorkCalendar\Calendar\Day\Day;
+use Lencse\WorkCalendar\Calendar\Day\Entity\Day;
 use Lencse\WorkCalendar\Hu\Repository\HuDayTypeRepository;
 use PHPUnit\Framework\TestCase;
 
