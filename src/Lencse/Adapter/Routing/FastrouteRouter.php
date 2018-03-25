@@ -23,6 +23,7 @@ class FastrouteRouter implements Router
     public function add(Route $route): void
     {
         $this->routes[] = $route;
+        $this->routes[] = new Route($route->getPath() . '/', $route->getHandlerClass());
     }
 
     public function route(ServerRequestInterface $request): RoutingResult

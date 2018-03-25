@@ -121,4 +121,16 @@ class ApplicationTest extends TestCase
         $this->assertEquals('Bad Request', $result['errors']['0']['status']);
         $this->assertEquals('Invalid date format: 2018-01-xx', $result['errors']['0']['title']);
     }
+
+    public function testTrailingSlash()
+    {
+        $app = Bootstrap::createApplication();
+        $request = new ServerRequest(
+            'GET',
+            '/api/v1/day-types/'
+        );
+
+        $response = $app->run($request);
+        $this->assertEquals(200, $response->getStatusCode());
+    }
 }
