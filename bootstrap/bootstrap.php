@@ -1,9 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/helpers.php';
-
 $appRoot = dirname(__DIR__);
+
+require_once $appRoot . '/vendor/autoload.php';
+require_once 'helpers.php';
+
 
 if (file_exists($appRoot . '/.env')) {
     $dotenv = new \Dotenv\Dotenv($appRoot);
