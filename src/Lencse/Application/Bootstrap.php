@@ -2,10 +2,7 @@
 
 namespace Lencse\Application;
 
-use Lencse\Application\DependencyInjection\Caller;
 use Lencse\Application\DependencyInjection\Dic;
-use Lencse\Application\Http\JsonApi\JsonApi;
-use Lencse\Application\Http\Messaging\ResponseTransformer;
 use Lencse\Application\Routing\Route;
 use Lencse\Application\Routing\Router;
 

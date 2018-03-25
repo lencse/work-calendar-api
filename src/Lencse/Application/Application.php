@@ -2,12 +2,10 @@
 
 namespace Lencse\Application;
 
-use Lencse\Application\DependencyInjection\Caller;
 use Lencse\Application\Exception\ApplicationException;
 use Lencse\Application\Http\JsonApi\JsonApi;
 use Lencse\Application\Http\Messaging\ResponseTransformer;
 use Lencse\Application\Routing\RouteCaller;
-use Lencse\Application\Routing\Router;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
