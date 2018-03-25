@@ -5,7 +5,7 @@ namespace App;
 use GuzzleHttp\Psr7\ServerRequest;
 use Lencse\Application\Bootstrap;
 
-require_once __DIR__ . '/../bootstrap/bootstrap.php';
+require_once dirname(__DIR__) . '/bootstrap/bootstrap.php';
 
 $app = Bootstrap::createApplication();
 
