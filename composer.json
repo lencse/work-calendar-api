@@ -28,7 +28,8 @@
         "phploc/phploc": "^4.0",
         "vimeo/psalm": "^1.0",
         "phpbench/phpbench": "^0.14.0",
-        "brunty/cigar": "^1.8"
+        "brunty/cigar": "^1.8",
+        "phpstan/phpstan": "^0.9.2"
     },
     "autoload": {
         "psr-4": {
@@ -57,7 +58,8 @@
         "cs": "phpcs --standard=PSR2 src test",
         "loc": "phploc --count-tests -vvv src test",
         "psalm": "psalm",
-        "test-all": "composer test-coverage && composer min-coverage && composer md && composer cs && composer psalm && composer loc",
+        "phpstan": "phpstan analyse --level 7 src test bootstrap",
+        "test-all": "composer test-coverage && composer min-coverage && composer md && composer cs && composer psalm && composer phpstan && composer loc",
         "benchmark": "phpbench run  --revs=100 --iterations=5 --report=default",
         "benchmark-trace": "phpbench xdebug:trace --extension=\"PhpBench\\Extensions\\XDebug\\XDebugExtension\"",
         "cigar-local": "cigar --url=http://localhost:8220"

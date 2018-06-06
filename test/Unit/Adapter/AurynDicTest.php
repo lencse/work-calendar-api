@@ -65,6 +65,7 @@ class AurynDicTest extends TestCase
     {
         $dic = new AurynDic();
         $dic->shareInstance(DateTimeInterface::class, DateHelper::dateTime('2018-03-15'));
+        /** @var DateTime $result */
         $result = $dic->make(DateTimeInterface::class);
         $this->assertEquals('2018-03-15', $result->format('Y-m-d'));
     }
@@ -76,6 +77,7 @@ class AurynDicTest extends TestCase
         /** @var DateTime $date */
         $date = $dic->make(DateTime::class);
         $date->setDate(2018, 1, 1);
+        /** @var DateTime $result */
         $result = $dic->make(DateTime::class);
         $this->assertEquals('2018-01-01', $result->format('Y-m-d'));
     }
