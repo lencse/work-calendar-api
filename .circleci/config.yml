@@ -1,9 +1,9 @@
 _:
-    _: &CONFIG
+    a: &CONFIG
         docker:
             - image: circleci/php:7.2-browsers
         working_directory: ~/repo
-    _: &RESTORE_CACHE
+    b: &RESTORE_CACHE
         - restore_cache:
             keys:
                 - v1-dependencies-{{ checksum "composer.json" }}
