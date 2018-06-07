@@ -1,13 +1,8 @@
 _:
-    a: &CONFIG
+    _: &CONFIG
         docker:
             - image: circleci/php:7.2-browsers
         working_directory: ~/repo
-    b: &RESTORE_CACHE
-        - restore_cache:
-            keys:
-                - v1-dependencies-{{ checksum "composer.json" }}
-                - v1-dependencies-
 
 version: 2
 jobs:
@@ -15,7 +10,10 @@ jobs:
         <<: *CONFIG
         steps:
             - checkout
-            - <<: *RESTORE_CACHE
+            - restore_cache:
+                keys:
+                    - v1-dependencies-{{ checksum "composer.json" }}
+                    - v1-dependencies-
             - run:
                 name: Composer Install
                 command: composer install -n --prefer-dist
@@ -33,7 +31,10 @@ jobs:
         <<: *CONFIG
         steps:
             - checkout
-            - <<: *RESTORE_CACHE
+            - restore_cache:
+                keys:
+                    - v1-dependencies-{{ checksum "composer.json" }}
+                    - v1-dependencies-
             - run:
                 name: Composer Install
                 command: composer install -n --prefer-dist
@@ -56,7 +57,10 @@ jobs:
                 command: |
                     heroku git:remote -a $HEROKU_APP_NAME_STAGING
                     git push --force git@heroku.com:$HEROKU_APP_NAME_STAGING.git HEAD:refs/heads/master
-            - <<: *RESTORE_CACHE
+            - restore_cache:
+                keys:
+                    - v1-dependencies-{{ checksum "composer.json" }}
+                    - v1-dependencies-
             - run:
                 name: Composer Install
                 command: composer install -n --prefer-dist
@@ -79,7 +83,10 @@ jobs:
                 command: |
                     heroku git:remote -a $HEROKU_APP_NAME_PROD
                     git push --force git@heroku.com:$HEROKU_APP_NAME_PROD.git HEAD:refs/heads/master
-            - <<: *RESTORE_CACHE
+            - restore_cache:
+                keys:
+                    - v1-dependencies-{{ checksum "composer.json" }}
+                    - v1-dependencies-
             - run:
                 name: Composer Install
                 command: composer install -n --prefer-dist
